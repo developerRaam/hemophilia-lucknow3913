@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+
+<section>
+    <div class="container-fluid  py-2">
+        <div class="row">
+            <div class="col-md-8">
+                {% if Youtube_detail %}
+                <div class="mt-4">
+                    <h2 class="mb-4" style="font-family: serif;">{{Youtube_detail.youtube_title}}</h2>
+                    <div class="youtube_detail">
+                        {% video Youtube_detail.youtube_link '640x480' %}
+                    </div>
+                    <div class="mt-4">
+                        {{Youtube_detail.description | safe}}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="mt-4">
+                    <h1 style="font-family: Merriweather-Bold";>Recent Youtube Video</h1>
+                    
+                    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+                        
+                        {% for data in recent_Youtube %}
+                    <div class="row border-bottom py-2">
+                        {% comment %} <div class="col-3 col-sm-3 col-md-3">
+                            <div class="youtube_recent">
+                                {% video data.youtube_link  %}
+                            </div>
+                        </div> {% endcomment %}
+                        <div class="col-12 col-sm-12 col-md-12 ">
+                            <div class="py-2">
+                                <a class="text-decoration-none text-dark news_url" href="{% url 'youtube' youtube_slug=data.slug %}">{{data.youtube_title | truncatechars:90}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+
+
+
+<!--section 1-->
+<section class="bg-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <img class="w-100" src="{% static 'images/hemophilia1.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6 border p-4">
+                <div style="text-align:justify">
+                    <h2 style="font-family: fantasy;">Our Story</h2>
+                    <p >
+                        Hemophilia is usually a rare X - linked bleeding disorder, characterized by a deficiency of a component of blood called factor VIII or IX. Persons suffering from it have prolonged bleeding. It is due to the absence of certain blood clotting factors in the blood. Bleeding may be after an injury or spontaneously. Normally bleeding occurs in joints, muscles and other internal organs of the body and the patient with hemophilia bleeds for a much longer duration in comparison to a normal person and affects the functioning of various organs of the body.
+                    </p>
+                    <p>
+                        Hemophilia is a lifelong incurable but it is very well manageable if proper methodological information and adequate use of Anti Hemophilia Factor (AHF). <a href="http://127.0.0.1:8000/about-us/">read more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- hemopholia news -->
+<section class="py-4">
+    <div class="container">
+        {% if hemos_news %}
+        <h1 style="font-family: Merriweather-Bold";>Recent News</h1>
+        <div id="hemo-news" class="owl-carousel owl-theme">
+            {% for data in hemos_news %}
+            <div class="item">
+                <div class="card p-1">
+                    <a class="text-decoration-none" href="{% url 'news-detail' title=data.slug %}">
+                        <img class="w-100" src="{{data.news_image.url}}" alt="{{data.news_title}}">          
+                        <p class="text-dark">{{data.news_title | truncatechars:80}} <span class="text-primary">&nbsp;read more</span> </p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!--Section 2 Desktop view-->
+{% if ourteam %}
+<section class="bg-light py-4 d-none d-sm-block d-sm-none d-md-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div style="margin-top:100px">
+                    <div class="border p-3">
+                        <h2 style="font-family: fantasy;">{{ourteam.heading}}</h2>
+                        <p class="mt-5 fs-5 justify-text">
+                            {{ourteam.caption}}
+                        </p>
+                        <a class="btn btn-primary mt-5" href="/meet-our-team">Meet our Team</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <figure>
+                    <img class="w-100" src="{{ourteam.image.url}}" alt="{{ourteam.heading}}">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!--Section 2 Mobile view-->
+{% if ourteam %}
+<section class="bg-light py-4 d-md-none d-lg-block d-lg-none d-xl-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <figure>
+                    <img class="w-100" src="{{ourteam.image.url}}" alt="{{ourteam.heading}}">
+                </figure>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div style="margin-top:100px">
+                    <div class="border p-3">
+                        <h2 style="font-family: fantasy;">{{ourteam.heading}}</h2>
+                        <p class="mt-5 fs-5 justify-text">
+                            {{ourteam.caption}}
+                        </p>
+                        <a class="btn btn-primary mt-5" href="/meet-our-team">Meet our Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section>
+    <div class="container py-5">
+        <h2 class="text-center text-uppercase" style="font-family: fantasy;">get in touch</h2>
+        {% for message in messages %}
+        <div class="alert alert-info mt-2 text-center" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+            <form action="{% url 'contact-us' %}" method="post">
+                {% csrf_token %}
+                <div class="row py-4">
+                    <div class="col-md-6">
+                        <input class="form-control py-3 my-3" type="text" name="name" placeholder="ENTER YOUR NAME" required>
+                        <input class="form-control py-3 my-3" type="email" name="email" placeholder="ENTER YOUR EMAIL" >
+                        <input class="form-control py-3 my-3" type="number" name="mobile" placeholder="ENTER YOU MOBILE" required>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea class="mt-3" name="comment" cols="54" rows="8" placeholder="ENTER YOUR MESSAGE" style="border:1px solid #ddd" required></textarea>
+                    </div>
+                    <div class="w-100 text-center">
+                        <input type="submit" class="btn btn-danger mt-3 text-uppercase " name="submit" value="SEND QUERY">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

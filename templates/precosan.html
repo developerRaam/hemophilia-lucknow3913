@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="container  py-2">
+        <div class="row">
+          
+            {% if precosan_data %}
+            <div class="col-md-9">
+                <h1 style="font-family: Merriweather-Bold">RECENT NEWS</h1><hr>
+                {% for data in precosan_data %}
+                <div>
+                   
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a class="text-decoration-none" href="{% url 'precosans-detail' title=data.slug %}">
+                          <img class="w-100" src="{{data.pr_image.url}}" alt="{{data.title}}">
+                        </a>
+                        </div>
+                        <div class="col-md-10">
+                          <a class="text-decoration-none" href="{% url 'precosans-detail' title=data.slug %}">
+                            {{data.title}}
+                          </a>
+                          <div>{{data.sub_title | safe | truncatechars:200}}</div>
+                          
+                        </div>
+                      </div>
+                    
+                </div><hr>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-3">
+                <h1 style="font-family: Merriweather-Bold";>Read This</h1>
+                {% for data in popular_precosan %}
+                <div>
+                    <a class="text-decoration-none text-dark news_url" href="{% url 'precosans-detail' title=data.slug %}">
+                      <div class="d-flex">
+                        <img class="mt-2 me-2" width="70" height="70" src="{{data.pr_image.url}}" alt="{{data.title}}">
+                        <p>{{data.title | truncatechars:90}}</p>
+                      </div>
+                    </a>
+                </div><hr>
+                {% endfor %}
+            </div>
+            {% else %}
+            <h2 class="text-center py-5">Not found any precosan for patient</h2>
+            {% endif %}
+        </div>
+<!-- divagination -->
+      <nav class="text-center mt-3" aria-label="...">
+        <ul class="pagination">
+
+            {% if precosan_data.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="/news/?page=1" tabindex="-1" aria-disabled="true">First</a>
+            </li>
+          <li class="page-item">
+            <a class="page-link" href="/news/?page={{precosan_data.previous_page_number}}" tabindex="-1" >Previous</a>
+          </li>
+          {% endif %}
+
+          {% for n in total_page_list %}
+          <li class="page-item"><a class="page-link" href="/news/?page={{n}}">{{n}}</a></li>
+          {% endfor %}
+
+          {% if precosan_data.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="/news/?page={{precosan_data.next_page_number}}">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/news/?page={{last_page}}">Last</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </nav>
+    </div>
+    
+</section>
+
+{% endblock content %}
