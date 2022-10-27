@@ -7,12 +7,12 @@ from django.contrib import messages
 #======================= Home ===================
 def Home(request):
     res = Banner.objects.all().order_by('-created_date')
-    #res2 = OurTeam.objects.get()
+    res2 = OurTeam.objects.get()
     res3 = YoutubeVideo.objects.all().order_by('-created_date')
     res4 = News.objects.all().order_by('-created_date')
     context = {
         'banner_data':res,
-        #'ourteam':res2,
+        'ourteam':res2,
         'youtube':res3,
         'hemos_news':res4
     }
