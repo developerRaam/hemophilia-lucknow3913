@@ -10,13 +10,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card" data-aos="fade-right" data-aos-duration="2000">
                     <img class="w-100" src="{% static 'images/hemophilia1.jpg' %}" alt="">
                 </div>
             </div>
-            <div class="col-md-6 border p-4">
+            <div class="col-md-6 border p-4" data-aos="fade-up-left">
                 <div style="text-align:justify">
-                    <h2 style="font-family: fantasy;">Our Story</h2>
+                    <h2 style="font-family: fantasy;">About US</h2>
                     <p >
                         Hemophilia is usually a rare X - linked bleeding disorder, characterized by a deficiency of a component of blood called factor VIII or IX. Persons suffering from it have prolonged bleeding. It is due to the absence of certain blood clotting factors in the blood. Bleeding may be after an injury or spontaneously. Normally bleeding occurs in joints, muscles and other internal organs of the body and the patient with hemophilia bleeds for a much longer duration in comparison to a normal person and affects the functioning of various organs of the body.
                     </p>
@@ -37,10 +37,10 @@
         <div id="hemo-news" class="owl-carousel owl-theme">
             {% for data in hemos_news %}
             <div class="item">
-                <div class="card p-1">
+                <div class="card h-100 p-1">
                     <a class="text-decoration-none" href="{% url 'news-detail' title=data.slug %}">
                         <img class="w-100" src="{{data.news_image.url}}" alt="{{data.news_title}}">          
-                        <p class="text-dark">{{data.news_title | truncatechars:80}} <span class="text-primary">&nbsp;read more</span> </p>
+                        <p class="text-dark">{{data.news_title | truncatechars:74}} <span class="text-primary">&nbsp;read more</span> </p>
                     </a>
                 </div>
             </div>
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6">
-                <div style="margin-top:100px">
+                <div style="margin-top:100px" data-aos="flip-left">
                     <div class="border p-3">
                         <h2 style="font-family: fantasy;">{{ourteam.heading}}</h2>
                         <p class="mt-5 fs-5 justify-text">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-6">
-                <figure>
+                <figure data-aos="flip-right">
                     <img class="w-100" src="{{ourteam.image.url}}" alt="{{ourteam.heading}}">
                 </figure>
             </div>

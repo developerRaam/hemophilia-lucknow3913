@@ -5,7 +5,7 @@ $(document).ready(function(){
     items : 1,
     loop : true,
     autoplay:true,
-    autoplayTimeout:2000,
+    autoplayTimeout:4000,
   });
 })
 
@@ -17,6 +17,6 @@ $(document).ready(function(){
     loop : true,
     nav:false,
     autoplay:true,
-    autoplayTimeout:2000,
+    autoplayTimeout:5000,
   });
 })
