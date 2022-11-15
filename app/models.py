@@ -44,7 +44,7 @@ class Precosan(models.Model):
     title = models.CharField(max_length=255)
     sub_title = models.CharField(max_length=400,blank=True, null=True)
     category = models.ForeignKey(precosanCategory,null=True, blank=True, on_delete=models.CASCADE, default=1)
-    pr_image = models.ImageField(upload_to="precosan/")
+    pr_image = models.ImageField(upload_to="precosan/", blank=True, null=True)
     description = HTMLField(null=True, blank=True)
     post_by = models.CharField(max_length=50, default="admin")
     views = models.IntegerField(default="0")
@@ -61,7 +61,7 @@ class YoutubeVideo(models.Model):
 class News(models.Model):
     news_title = models.CharField(max_length=255)
     sub_title = models.CharField(max_length=400, blank=True, null=True)
-    news_image = models.ImageField(upload_to="news/")
+    news_image = models.ImageField(upload_to="news/",blank=True, null=True)
     news_category = models.ForeignKey(NewsCategory,null=True, blank=True, on_delete=models.CASCADE, default=1)
     news_description = HTMLField(null=True, blank=True)
     views = models.IntegerField(default="0")

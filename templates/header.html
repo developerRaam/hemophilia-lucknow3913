@@ -14,13 +14,13 @@
             <a class="nav-link nav_btn text-uppercase " href="/news">News</a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn text-uppercase " href="/meet-our-team">OurTeam</a>
+            <a class="nav-link nav_btn text-uppercase " href="/precosans">Precosan</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link nav_btn text-uppercase " href="/meet-our-team">Member</a>
           </li>
           <li class="nav-item me-2">
             <a class="nav-link nav_btn text-uppercase " href="/doctors">Doctor</a>
-          </li>
-          <li class="nav-item me-2">
-            <a class="nav-link nav_btn text-uppercase " href="/precosans">Precosan</a>
           </li>
           <li class="nav-item me-2">
             <a class="nav-link nav_btn text-uppercase " href="/youtube-channel">Youtube Video</a>
@@ -47,7 +47,7 @@
 
   <div id="header-carousel" class="owl-carousel owl-theme">
     {% for data in banner_data %}
-    <div class="item">
+    <div class="item" style="height:100%">
       <img  src="{{data.banner_img.url}}" class="d-block w-100" alt="...">
     </div>
     {% endfor %}

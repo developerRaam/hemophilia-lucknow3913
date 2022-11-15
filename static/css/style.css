@@ -54,5 +54,5 @@ iframe{
 
 /* owl prev and next button hidden*/
 .owl-theme .owl-nav.disabled+.owl-dots {
-    visibility: hidden !important;
+    /* visibility: hidden !important; */
 }
