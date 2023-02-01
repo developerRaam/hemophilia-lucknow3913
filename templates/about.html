@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}About us | {{site_name}}{% endblock %}
 {% block content %}
 
 <section>
@@ -25,6 +25,10 @@
                     <p>
                         Hemophilia is an inherited rare bleeding disorder but also caused by a mutation or change, in one of the genes, that provides instructions for making the clotting factor proteins needed to form a blood clot. This change or mutation can prevent the clotting protein from working properly. These genes are located on the X chromosome.
                     </p>
+
+                    <div class="w-100 text-center">
+                        <img src="{% static 'images/success-key.JPG' %}" alt="hemophilia">
+                    </div>
                     
                     <h3 class="text-danger fw-bold">Symptoms of Hemophilia</h3>
                     <p>

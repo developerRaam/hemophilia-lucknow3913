@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}Doctors | {{site_name}}{% endblock %}
 {% block content %}
 
 <section>
     {% if hemo_doctor %}
     <div class="container  mb-4">
-        <h1 class="text-uppercase text-center py-5" style="font-size:50px;font-family: fantasy;">meet our doctors</h1>
+        <h1 class="text-uppercase text-center py-5 bottom_border"><span>meet our doctors</span></h1>
         <div class="row gy-3">
             {% for data in hemo_doctor %}
             <div class="col-sm-4 col-md-3 col-lg-3 col-xl-3">
                 <div class="card shadow h-100"  style="background: linear-gradient(to top left, #784a92 0%, #3e2449 100%);">
-                    <img class="w-100" src="{{data.image.url}}" alt="{{data.name}}">
+                    <div class="text-center">
+                        <img class="w-100" height="250" src="{{data.image.url}}" alt="{{data.name}}">
+                    </div>
                     <div class="hemo_detail">
                         <p class="text-info text-capitalize"><strong>{{data.name}}</strong></p>
                         <p class="text-warning">{{data.department}}</p>

@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="F:\Django\hemophilia-lucknow3913\venv"
+VIRTUAL_ENV="D:\Django\hemophilia-lucknow3912\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

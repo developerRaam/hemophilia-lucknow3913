@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About of Hemophilia | {{site_name}}{% endblock %}
+{% block content %}
+
+<section>
+    <div class="container py-4">
+        <h2 class="text-center mb-5" style="font-family: initial;">About Hemophilia Society (Lucknow)</h2>
+        <!--Translator button-->
+        {% if about.hindi and about.english %}
+        <div class="d-flex justify-content-center mb-4">
+            <div class="col-md-10 text-end">
+                <button class="btn btn-outline-primary me-3" id="btn_english">English</button>
+                <button class="btn btn-outline-primary" id="btn_hindi">Hindi</button>
+            </div>    
+        </div>
+        {% endif %}
+
+        <!--Default content-->
+        <div class="d-flex justify-content-center">
+            <div class="col-md-10 mt-1" id="default_content">
+                {% if about.hindi %}
+                <div class="mt-1 font_family">
+                    {{about.hindi | safe}}
+                </div>
+                {% elif about.english %}
+                    <div class="mt-1">
+                        {{about.english | safe}}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+            <!--Show after choose language-->
+            <div class="col-md-10 mt-1" id="english" style="display:none;font-family:auto;font-size: 20px;">
+                {{about.english|safe}}
+            </div>
+            <div class="col-md-10 font_family mt-1" id="hindi" style="display:none">
+                {{about.hindi|safe}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

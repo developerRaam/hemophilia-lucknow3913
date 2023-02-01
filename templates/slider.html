@@ -1,0 +1,13 @@
+  
+  {% if banner_data %}
+
+  <div id="header-carousel" class="owl-carousel owl-theme">
+    {% for data in banner_data %}
+      {% if data.status == 1 %}
+      <div class="item" style="height:100%">
+        <img class="banner_image" src="{{data.banner_img.url}}" class="d-block w-100" alt="...">
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}

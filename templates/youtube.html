@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load embed_video_tags %}
-
+{% block title %}Youtube Videos | {{site_name}}{% endblock %}
 {% block content %}
 
 <section>
     <div class="container py-5">
         <div class="row gy-4">
             <h1 class="text-capitalize">Subscribe Our Youtube channel links <a class="btn btn-danger" href="https://youtube.com/c/HemophiliaLucknow" target="blank">Subscribe</a></h1>
-            {% for data in youtube_list %}
+            {% for data in objects %}
             <div class="col-sm-6 col-md-4 col-lg-4">
               <a class="text-decoration-none" href="{% url 'youtube' youtube_slug=data.slug %}">
-                <div class="card shadow-sm p-1">
+                <div class="card shadow-sm p-1 h-100">
                     {% video data.youtube_link '420x315' %}
                     <p>{{data.youtube_title | truncatechars:70}}</p>
                 </div>
@@ -21,35 +21,10 @@
         </div>
 
         <!-- pagination -->
-        <nav class="text-center mt-3" aria-label="...">
-            <ul class="pagination">
-
-                {% if youtube_list.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="/youtube-channel/?page=1" tabindex="-1" aria-disabled="true">First</a>
-                </li>
-              <li class="page-item">
-                <a class="page-link" href="/youtube-channel/?page={{youtube_list.previous_page_number}}" tabindex="-1" >Previous</a>
-              </li>
-              {% endif %}
-
-              {% for n in total_page_list %}
-              <li class="page-item"><a class="page-link" href="/youtube-channel/?page={{n}}">{{n}}</a></li>
-              {% endfor %}
-
-              {% if youtube_list.has_next %}
-              <li class="page-item">
-                <a class="page-link" href="/youtube-channel/?page={{youtube_list.next_page_number}}">Next</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="/youtube-channel/?page={{last_page}}">Last</a>
-              </li>
-              {% else %}
-                <h2 class="text-center py-5">Not found any youtube video</h2>
-              {% endif %}
-
-            </ul>
-          </nav>
+        <div>
+          {% include 'pagination.html' %}
+        </div>
+                   
     </div>
 </section>
 

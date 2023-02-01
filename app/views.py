@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import *
+from posts.models import NewsCategory,News,Precosan,precosanCategory
 from django.core.paginator import Paginator
 from django.contrib import messages
 
@@ -7,21 +8,33 @@ from django.contrib import messages
 #======================= Home ===================
 def Home(request):
     res = Banner.objects.all().order_by('-created_date')
-    res2 = OurTeam.objects.get()
     res3 = YoutubeVideo.objects.all().order_by('-created_date')
-    res4 = News.objects.all().order_by('-created_date')
+    res4 = News.objects.all().order_by('-created_date')[:4]
+    res5 = Precosan.objects.all().order_by('-created_date')[:4]
+    about = HistoryHemophilia.objects.get()
     context = {
         'banner_data':res,
-        'ourteam':res2,
         'youtube':res3,
-        'hemos_news':res4
+        'hemos_news':res4,
+        'presosan':res5,
+        'about':about
     }
-
     return render(request, 'home.html',context)
 
 #======================= About ===================
 def About(request):
     return render(request, 'about.html')
+
+#======================= About ===================
+def History(request):
+    about = HistoryHemophilia.objects.get()
+    return render(request, 'history.html',{'about':about})
+
+#======================= About ===================
+def HemophiliaAbout(request):
+    about = AboutHemophilia.objects.get()
+    return render(request, 'about-hemophilia.html',{'about':about})
+
 
 #======================= Contact ===================
 def ContactUS(request):
@@ -41,14 +54,13 @@ def ContactUS(request):
 #======================= Youtube ===================
 def Youtube(request):
     res = YoutubeVideo.objects.all().order_by('-created_date')
-    paginator = Paginator(res, 10) # pagination
-    page_number = request.GET.get('page')
-    service_data = paginator.get_page(page_number)
-    total_page = service_data.paginator.num_pages
+    
+    paginator = Paginator(res, 15)  # Show 2 objects per page
+    page = request.GET.get('page')
+    objects = paginator.get_page(page)
+    
     context={
-        'youtube_list':service_data,
-        'last_page':total_page,
-        'total_page_list':[n+1 for n in range(total_page)]
+        "objects":objects
     }
     return render(request, 'youtube.html',context)
 
@@ -79,68 +91,3 @@ def Doctors(request):
     }
     return render(request, 'doctors.html',context)
 
-
-#======================= Hemopholia News ===================
-def Hemo_News(request):
-    res = News.objects.all().order_by('-created_date')
-    res2 = News.objects.all().order_by('-views')
-    
-    paginator = Paginator(res, 15) # pagination
-    page_number = request.GET.get('page')
-    service_data = paginator.get_page(page_number)
-    total_page = service_data.paginator.num_pages
-
-    context={
-        'hemo_news':service_data,
-        'last_page':total_page,
-        'total_page_list':[n+1 for n in range(total_page)],
-        'popular_news':res2
-    }
-    return render(request, 'news.html',context)
-
-
-#======================= News Details ===================
-def NewsDetail(request,title):
-    res =  News.objects.get(slug=title)
-    res2 = News.objects.all().order_by('-views')
-    # views count
-    res.views = res.views + 1
-    res.save()
-    
-
-    context={
-        'news_detail':res,
-        'popular_news':res2
-    }
-    return render(request,'news_details.html',context)  
-
-#======================= Precosans ===================
-def Precosans(request):
-    res = Precosan.objects.all().order_by('-created_date')
-    res2 = Precosan.objects.all().order_by('-views')
-    
-    paginator = Paginator(res, 15) # pagination
-    page_number = request.GET.get('page')
-    service_data = paginator.get_page(page_number)
-    total_page = service_data.paginator.num_pages
-
-    context={
-        'precosan_data':service_data,
-        'last_page':total_page,
-        'total_page_list':[n+1 for n in range(total_page)],
-        'popular_precosan':res2
-    }
-    return render(request, 'precosan.html',context)
-
-#======================= Precosan Detail ===================
-def PrecosanDetail(request,title):
-    res =  Precosan.objects.get(slug=title)
-    res2 = Precosan.objects.all().order_by('-views')
-    # views count
-    res.views = res.views + 1
-    res.save()
-    context={
-        'precosan_detail':res,
-        'popular_precosan':res2,
-    }
-    return render(request,'precosan_details.html',context)

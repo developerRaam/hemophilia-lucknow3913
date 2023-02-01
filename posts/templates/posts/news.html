@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}News | {{site_name}}{% endblock %}
+{% block content %}
+
+<section>
+    <div class="container  py-2">
+        <div class="row">
+            {% if objects %}
+            <div class="col-md-9">
+                <h1 style="font-family: Merriweather-Bold">RECENT NEWS</h1><hr>
+                {% for data in objects %}
+                <div>
+                    <a class="text-decoration-none" href="{% url 'news-detail' title=data.slug %}">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img class="w-100" src="{{data.news_image.url}}" alt="{{data.news_title}}">
+                        </div>
+                        <div class="col-md-10">
+                          {{data.news_title}}
+                          <div class="text-dark">{{data.sub_title | safe | truncatechars:100}}</div>
+                        </div>
+                      </div>
+                    </a>
+                </div><hr>
+                {% endfor %}
+                  <!-- pagination -->
+                <div>
+                  {% include 'pagination.html' %}
+                </div>
+            </div>
+
+            <div class="col-md-3">
+              {% include 'posts/right_sidebar.html' %}
+            </div>
+            {% else %}
+                    <h2 class="text-center py-5">Not found any news</h2>
+            {% endif %}
+        </div>
+    </div>
+    
+</section>
+
+{% endblock content %}

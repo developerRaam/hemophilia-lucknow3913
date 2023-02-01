@@ -1,10 +1,14 @@
 @import url('../font/Poppins-Regular.ttf');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 
 body{
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins';
 	box-sizing: border-box;
 	overflow-x: hidden;
-	background: url('/images/pattern.png');
+	/* background: url('/images/pattern.png'); */
+}
+.font_family{
+	font-family: 'Noto Sans', sans-serif;
 }
 .nav_btn{
     padding: 10px;
@@ -14,6 +18,11 @@ body{
 	background-color: #000;
 	color: #fff !important;
     padding: 10px;
+}
+
+.navbar_toggler {
+    background: transparent !important;
+    border: 0 !important;
 }
 
 .hemo_doctors{
@@ -52,7 +61,32 @@ iframe{
 
 }
 
-/* owl prev and next button hidden*/
-.owl-theme .owl-nav.disabled+.owl-dots {
-    /* visibility: hidden !important; */
+/*========= After ===========*/
+.bottom_border{
+	font-size: 30px;
+    font-family: 'Poppins';
+    letter-spacing: 5px;
+}
+.bottom_border span{
+	position: relative;
+}
+.bottom_border span::before{
+	position: absolute;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #3c7fbb;
+	bottom: 0;
+}
+.bottom_border span::after{
+	position: absolute;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #3c7fbb;
+	top: 0;
+	left: 0;
+}
+.aligned label{
+	font-size:20px !important;
 }

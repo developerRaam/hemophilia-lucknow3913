@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{news_detail.news_title}} | {{site_name}}{% endblock %}
+{% block content %}
+
+<section>
+    <div class="container  py-2">
+        <div class="row">
+            <div class="col-md-9">
+                {% if news_detail %}
+                <div class="mt-4">
+                    <h2 class="mb-4"><strong>{{news_detail.news_title}}</strong></h2>
+                    <p class="text-dark">{{news_detail.sub_title | safe }}</p>
+                    <div class="d-flex justify-content-between">
+                        <p>{{news_detail.news_category}}</p>
+                    </div>
+                    <img class="w-100" src="{{news_detail.news_image.url}}" alt="{{news_detail.news_title}}">
+                    
+                    <!--Button-->
+                    <div class="d-flex justify-content-between">
+                        <p class="mt-2">
+                            <span>{{news_detail.created_date | date}}</span> 
+                            <span class="text-secondary">Post by: {{news_detail.post_by}}</span>
+                        </p>
+                        {% if news_detail.english_description and news_detail.hindi_description %}
+                        <p class="mt-2">
+                            <button class="btn btn-outline-primary" id="btn_english">English</button>
+                            <button class="btn btn-outline-primary" id="btn_hindi">Hindi</button>
+                        </p>
+                        {% endif %}
+                    </div>
+
+                    <!--discription-->
+                    <!--Default content-->
+                    <div id="default_content">
+                        {% if news_detail.english_description %}
+                        <div class="mt-1">
+                            {{news_detail.english_description | safe}}
+                        </div>
+                        {% elif news_detail.hindi_description %}
+                            <div class="mt-1">
+                                {{news_detail.hindi_description | safe}}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!--Show after choose language-->
+                    <div class="mt-1" id="english" style="display:none">
+                        {{news_detail.english_description | safe}}
+                    </div>
+                    <div class="mt-1" id="hindi" style="display:none">
+                        {{news_detail.hindi_description | safe}}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <!--Sidebar-->
+            <div class="col-md-3">
+                {% include 'posts/right_sidebar.html' %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}

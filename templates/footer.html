@@ -1,48 +1,72 @@
 {% load static %}
-<footer class="bg-secondary">
+<footer style="background-color:#3c7fbb">
     <div class="container py-2">
         <div class="row">
             <div class="col-md-5">
                 <div>
                     <h4 class="my-3 text-light">About Us</h4>
-                    <p class="text-light">Hemophilia is a lifelong incurable but it is very well manageable if proper methodological information and adequate use of Anti Hemophilia Factor (AHF). </p>
+                    <p class="text-light">{{site.site_desc}}</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div>
                     <h4 class="my-3 text-light">Links</h4>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled" style="font-size:13px">
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/">Home</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/youtube-channel">Youtube Channel</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/news">News</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/meet-our-team">Our Team</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/doctors">Our Doctors</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/contact-us">Contact Us</a></li>
+                        <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/history-of-hemophilia">History of Hemophilia</a></li>
+                        <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/about-hemophilia-society">About Hemophilia Society</a></li>
                         <li class="my-2" ><strong class="text-white"> > </strong><a class="text-decoration-none text-white" href="/about-us">About Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
-                <div>
+                <div style="font-size:13px">
                     <h4 class="my-3 text-light">Contact Us</h4>
                     <address class="text-white">
-                        <ion-icon name="location-outline"></ion-icon>&nbsp; MD-30, Sector – D, LDA  Colony Kanpur &nbsp;&nbsp;&nbsp;&nbsp; Road Lucknow – 226012. <br> <br>
-                        <ion-icon name="call-outline"></ion-icon>&nbsp; +91 9415033555,  0522 4311355 <br><br>
-                        <ion-icon name="mail-outline"></ion-icon>&nbsp; hemophilialucknow2020@gmail.com <br> &nbsp;&nbsp;&nbsp;&nbsp; 
-                            vinaylucknow@gmail.com 
+                        <ion-icon name="location-outline"></ion-icon>&nbsp; {% if contact.address %}{{contact.address}}{% endif %} <br> <br>
+                        <ion-icon name="call-outline"></ion-icon>&nbsp; {% if contact.contact1 %}{{contact.contact1}}{% endif %}, {% if contact.contact2 %}{{contact.contact2}}{% endif %}<br><br>
+                        <ion-icon name="mail-outline"></ion-icon>&nbsp; {% if contact.email1 %}{{contact.email1}}{% endif %} <br> &nbsp;&nbsp;&nbsp;&nbsp; 
+                            {% if contact.email2 %}{{contact.email2}}{% endif %}
                         
                     </address>
                     <ul class="d-flex">
-                        <li class="me-2 list-unstyled"><a class="text-center" href="#"><img class="social-media-link" width="40" src="{% static 'images/icons/facebook.png' %}" alt=""></a></li>
-                        <li class="me-2 list-unstyled"><a class="text-center" href="#"><img class="social-media-link" width="40" src="{% static 'images/icons/instagram.png' %}" alt=""></a></li>
-                        <li class="me-2 list-unstyled"><a class="text-center" href="#"><img class="social-media-link" width="40" src="{% static 'images/icons/twitter.png' %}" alt=""></a></li>
-                        <li class="me-2 list-unstyled"><a class="text-center" href="https://youtube.com/c/HemophiliaLucknow" target="_blank"><img class="social-media-link" width="40" src="{% static 'images/icons/youtube.png' %}" alt=""></a></li>
+                        <li class="me-2 list-unstyled">
+                            <a class="text-center" href="{% if social.facebook %}{{social.facebook}}{% endif %}">
+                                <img class="social-media-link" width="40" src="{% static 'images/icons/facebook.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li class="me-2 list-unstyled">
+                            <a class="text-center" href="{% if social.facebook %}{{social.facebook_group}}{% endif %}">
+                                <img class="social-media-link" width="40" src="{% static 'images/icons/facebook_group_icon.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li class="me-2 list-unstyled">
+                            <a class="text-center" href="{% if social.instagram %} {{social.instagram}}{% endif %}">
+                                <img class="social-media-link" width="40" src="{% static 'images/icons/instagram.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li class="me-2 list-unstyled">
+                            <a class="text-center" href="{% if social.twitter %} {{social.twitter}}{% endif %}">
+                                <img class="social-media-link" width="40" src="{% static 'images/icons/twitter.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li class="me-2 list-unstyled">
+                            <a class="text-center" href="{% if social.youtube %} {{social.youtube}}{% endif %}" target="_blank">
+                                <img width="40" src="{% static 'images/icons/youtube.png' %}" alt="">
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <div class="bg-dark py-1 text-center ">
+        <p class=" text-white">&copy; Copyright {% now 'Y' %}</p>
+        <p class="text-white">Design & Developement By : <a target="_blank" href="https://realtechworld.in/">Real Tech World</a></p>
+    </div>
 </footer>
-<div class="bg-dark pb-1">
-    <p class="text-center text-white p-3">&copy; Copyright {% now 'Y' %}</p>
-</div>

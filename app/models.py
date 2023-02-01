@@ -1,21 +1,14 @@
 from django.db import models
 from autoslug import AutoSlugField
-from tinymce.models import HTMLField
+from tinymce.models import HTMLField #https://django-tinymce.readthedocs.io/en/latest/installation.html
 from django.contrib.auth.models import User
 from embed_video.fields import EmbedVideoField #https://django-embed-video.readthedocs.io/en/latest/installation.html
+
 
 
 # Create your models here.
 
 CM_STATUS = ((1, 'Enable'), (0, 'Disable'))
-
-class NewsCategory(models.Model):
-    category_name = models.CharField(max_length=50)
-    created_date =  models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.category_name
-    
 
 class doctorCategory(models.Model):
     name = models.CharField(max_length=50)
@@ -23,14 +16,6 @@ class doctorCategory(models.Model):
 
     def __str__(self):
         return self.name
-
-class precosanCategory(models.Model):
-    name = models.CharField(max_length=50)
-    created_date =  models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-    
 
 class SocietyCoMember(models.Model):
     name = models.CharField(max_length=50)
@@ -40,33 +25,11 @@ class SocietyCoMember(models.Model):
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)
     created_date =  models.DateTimeField(auto_now_add=True)
 
-class Precosan(models.Model):
-    title = models.CharField(max_length=255)
-    sub_title = models.CharField(max_length=400,blank=True, null=True)
-    category = models.ForeignKey(precosanCategory,null=True, blank=True, on_delete=models.CASCADE, default=1)
-    pr_image = models.ImageField(upload_to="precosan/", blank=True, null=True)
-    description = HTMLField(null=True, blank=True)
-    post_by = models.CharField(max_length=50, default="admin")
-    views = models.IntegerField(default="0")
-    slug = AutoSlugField(populate_from='title', unique=True,null=True, default=None)
-    created_date =  models.DateTimeField(auto_now_add=True)
-
 class YoutubeVideo(models.Model):
     youtube_title = models.CharField(max_length=255)
     youtube_link = EmbedVideoField()
     description = HTMLField(null=True, blank=True)
     slug = AutoSlugField(populate_from='youtube_title', unique=True,null=True, default=None)
-    created_date =  models.DateTimeField(auto_now_add=True)
-
-class News(models.Model):
-    news_title = models.CharField(max_length=255)
-    sub_title = models.CharField(max_length=400, blank=True, null=True)
-    news_image = models.ImageField(upload_to="news/",blank=True, null=True)
-    news_category = models.ForeignKey(NewsCategory,null=True, blank=True, on_delete=models.CASCADE, default=1)
-    news_description = HTMLField(null=True, blank=True)
-    views = models.IntegerField(default="0")
-    post_by = models.CharField(max_length=50, default="admin")
-    slug = AutoSlugField(populate_from='news_title', unique=True,null=True, default=None)
     created_date =  models.DateTimeField(auto_now_add=True)
 
 class Banner(models.Model):
@@ -86,15 +49,23 @@ class Doctor(models.Model):
     description = models.CharField(max_length=255)
     created_date =  models.DateTimeField(auto_now_add=True)
 
-class OurTeam(models.Model):
-    heading = models.CharField(max_length=50)
-    caption = models.CharField(max_length=500)
-    image = models.ImageField(upload_to="upload/")
-    created_date =  models.DateTimeField(auto_now_add=True)
-
 class Contactus(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50, null=True, blank=True)
     mobile = models.BigIntegerField()
     comment = models.TextField(null=True)
+    created_date =  models.DateTimeField(auto_now_add=True)
+    
+class AboutHemophilia(models.Model):
+    edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
+    image = models.ImageField(upload_to="hemophilia/",null=True, blank=True)
+    english = HTMLField(null=True, blank=True,)
+    hindi = HTMLField(null=True, blank=True)
+    created_date =  models.DateTimeField(auto_now_add=True)
+    
+class HistoryHemophilia(models.Model):
+    edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
+    image = models.ImageField(upload_to="hemophilia/",null=True, blank=True)
+    english = HTMLField(null=True, blank=True,)
+    hindi = HTMLField(null=True, blank=True)
     created_date =  models.DateTimeField(auto_now_add=True)

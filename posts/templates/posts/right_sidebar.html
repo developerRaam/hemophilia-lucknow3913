@@ -1,0 +1,33 @@
+
+{% if popular_news %}
+  <div class="mt-4">
+    <h1 class="fs-3" style="font-family: Merriweather-Bold";>Recent News</h1><hr>
+    {% for data in popular_news %}
+    <div>
+        <a class="text-decoration-none text-dark news_url" href="{% url 'news-detail' title=data.slug %}">
+        <div class="d-flex mt-2">
+            <img class="mt-2 me-2" width="70" height="70" src="{{data.news_image.url}}" alt="{{data.news_title}}">
+            <p style="font-size:13px">{{data.news_title | truncatechars:90}}</p>
+        </div>
+        </a>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+{% if popular_precosan %}
+  <div class="mt-4">
+    <h1 style="font-family: Merriweather-Bold";>Recent News</h1>
+    {% for data in popular_precosan %}
+    <div>
+        <a class="text-decoration-none text-dark news_url" href="{% url 'precosans-detail' title=data.slug %}">
+          <div class="d-flex">
+            <img class="mt-2 me-2" width="70" height="70" src="{{data.pr_image.url}}" alt="{{data.title}}">
+            <p>{{data.title | truncatechars:90}}</p>
+          </div>
+        </a>
+    </div><hr>
+    {% endfor %}
+  </div>
+{% endif %}
