@@ -15,10 +15,15 @@ urlpatterns = [
     path("history-of-hemophilia/",views.History),
     path("about-hemophilia-society/",views.HemophiliaAbout),
     path("contact-us/",views.ContactUS, name="contact-us"),
+    
     path("youtube-channel/",views.Youtube, name="youtube-channel"),
-    path("meet-our-team/",views.TeamMember, name="meet-our-team"),
-    path("doctors/",views.Doctors, name="doctors"),
     path("youtube/<youtube_slug>/",views.YoutubeVideoDetail, name="youtube"),
+    
+    path("team-member/",views.TeamMember, name="team-member"),
+    path("team-member/<slug>",views.TeamMemberDetail, name="team-member-detail"),
+    
+    path("doctors/",views.Doctors, name="doctors"),
+    path("doctor/<slug>",views.DoctorDetail, name="doctor-detail"),
     
     #Posts
     path("news/",post.Hemo_News, name="news"),

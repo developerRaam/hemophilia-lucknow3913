@@ -8,21 +8,20 @@
         <div class="row">
             {% if objects %}
             <div class="col-md-9">
-                <h1 style="font-family: Merriweather-Bold">RECENT NEWS</h1><hr>
                 {% for data in objects %}
-                <div>
+                <div class="mt-4">
                     <a class="text-decoration-none" href="{% url 'news-detail' title=data.slug %}">
                       <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                           <img class="w-100" src="{{data.news_image.url}}" alt="{{data.news_title}}">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                           {{data.news_title}}
                           <div class="text-dark">{{data.sub_title | safe | truncatechars:100}}</div>
                         </div>
                       </div>
                     </a>
-                </div><hr>
+                </div>
                 {% endfor %}
                   <!-- pagination -->
                 <div>

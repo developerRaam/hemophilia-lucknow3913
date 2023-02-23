@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Doctors | {{site_name}}{% endblock %}
+{% block content %}
+
+<section>
+    {% if dr_detail %}
+    <div class="container my-4">
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <div>
+                    <img class="w-100" src="{{dr_detail.image.url}}" alt="">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <p><strong>Name:</strong> <span>{{dr_detail.name}}</span></p>
+                    <p><strong>Department:</strong> {{dr_detail.department}}</p>
+                    <p><strong>Contact:</strong> +91 {{dr_detail.mobile}}</p>
+                    <p>{{dr_detail.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+
+</section>
+
+{% endblock content %}

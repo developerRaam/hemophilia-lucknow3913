@@ -1,16 +1,17 @@
 
 {% if popular_news %}
   <div class="mt-4">
-    <h1 class="fs-3" style="font-family: Merriweather-Bold";>Recent News</h1><hr>
+    <div>
+      <span class="bg-dark text-white p-1">Recent News</span>
+      <p class="w-100" style="border-bottom:2px solid #000"></p>
+    </div>
     {% for data in popular_news %}
     <div>
-        <a class="text-decoration-none text-dark news_url" href="{% url 'news-detail' title=data.slug %}">
-        <div class="d-flex mt-2">
-            <img class="mt-2 me-2" width="70" height="70" src="{{data.news_image.url}}" alt="{{data.news_title}}">
-            <p style="font-size:13px">{{data.news_title | truncatechars:90}}</p>
-        </div>
-        </a>
+      <div class="d-flex rtw-border-bottom py-2">
+        <i class="fa-sharp fa-solid fa-angle-right me-2 mt-1" style="font-size:12px"></i>
+        <a class="text-decoration-none text-dark" style="font-size:14px" href="{% url 'news-detail' title=data.slug %}">{{data.news_title}}</a>
     </div>
+  </div>
     {% endfor %}
   </div>
 {% endif %}
@@ -18,16 +19,17 @@
 
 {% if popular_precosan %}
   <div class="mt-4">
-    <h1 style="font-family: Merriweather-Bold";>Recent News</h1>
+    <div>
+      <span class="bg-dark text-white p-1">Recent precosan</span>
+      <p class="w-100" style="border-bottom:2px solid #000"></p>
+    </div>
     {% for data in popular_precosan %}
     <div>
-        <a class="text-decoration-none text-dark news_url" href="{% url 'precosans-detail' title=data.slug %}">
-          <div class="d-flex">
-            <img class="mt-2 me-2" width="70" height="70" src="{{data.pr_image.url}}" alt="{{data.title}}">
-            <p>{{data.title | truncatechars:90}}</p>
-          </div>
-        </a>
-    </div><hr>
+        <div class="d-flex rtw-border-bottom py-2">
+          <i class="fa-sharp fa-solid fa-angle-right me-2 mt-1" style="font-size:12px"></i>
+          <a class="text-decoration-none text-dark" style="font-size:14px" href="{% url 'precosans-detail' title=data.slug %}">{{data.title}}</a>
+      </div>
+    </div>
     {% endfor %}
   </div>
 {% endif %}

@@ -4,21 +4,20 @@
 {% block content %}
 
 <section>
-    <div class="container  py-2">
+    <div class="container py-2">
         <div class="row">
           
             {% if objects %}
             <div class="col-md-9">
-                <h1 style="font-family: Merriweather-Bold">RECENT NEWS</h1><hr>
                 {% for data in objects %}
-                <div>
+                <div class="mt-4">
                       <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                           <a class="text-decoration-none" href="{% url 'precosans-detail' title=data.slug %}">
                           <img class="w-100" src="{{data.pr_image.url}}" alt="{{data.title}}">
                         </a>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                           <a class="text-decoration-none" href="{% url 'precosans-detail' title=data.slug %}">
                             {{data.title}}
                           </a>
@@ -26,7 +25,7 @@
                           
                         </div>
                       </div>
-                </div><hr>
+                </div>
                 {% endfor %}
 
                   <!-- pagination -->

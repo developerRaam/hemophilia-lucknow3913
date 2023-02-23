@@ -40,7 +40,7 @@ admin.site.register(Doctor,DoctorAdmin)
 class ContactusAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
-    list_display=("name","email","mobile","comment","created_date")
+    list_display=("name","father_name","aadhar_no","email","mobile","whatsapp_no","address","comment","created_date")
 admin.site.register(Contactus,ContactusAdmin)
 
 class AboutHemophiliaAdmin(admin.ModelAdmin):

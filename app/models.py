@@ -19,9 +19,10 @@ class doctorCategory(models.Model):
 
 class SocietyCoMember(models.Model):
     name = models.CharField(max_length=50)
+    slug = AutoSlugField(populate_from='name', unique=True,null=True, default=None)
     image = models.ImageField(upload_to="co-member/", null=True, blank=True)
     position = models.CharField(max_length=50, null=True, blank=True)
-    description = models.CharField(max_length=255, null=True, blank=True)
+    description = HTMLField(null=True, blank=True)
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)
     created_date =  models.DateTimeField(auto_now_add=True)
 
@@ -43,16 +44,21 @@ class Banner(models.Model):
 
 class Doctor(models.Model):
     name = models.CharField(max_length=50)
+    slug = AutoSlugField(populate_from='name', unique=True,null=True, default=None)
     image = models.ImageField(upload_to="doctors/", null=True, blank=True)
     department = models.ForeignKey(doctorCategory, on_delete=models.CASCADE)
     mobile = models.CharField(max_length=10, null=True)
-    description = models.CharField(max_length=255)
+    description = HTMLField(null=True, blank=True)
     created_date =  models.DateTimeField(auto_now_add=True)
 
 class Contactus(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50,null=True, blank=True)
+    father_name = models.CharField(max_length=50,null=True, blank=True)
+    address = models.CharField(max_length=300,null=True, blank=True)
+    aadhar_no = models.CharField(max_length=12,null=True, blank=True)
     mobile = models.BigIntegerField()
+    whatsapp_no = models.BigIntegerField(null=True, blank=True)
+    email = models.EmailField(max_length=50, null=True, blank=True)
     comment = models.TextField(null=True)
     created_date =  models.DateTimeField(auto_now_add=True)
     

@@ -1,20 +1,18 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:#3c7fbb">
-    <div class="container">
-      <a class="navbar-brand text-light" href="/" style="line-height: 20px;">{{site_name}}</a>
-      {% comment %} <button style="border:1px solid #ddd !important;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <ion-icon name="menu-outline" style="color:#ddd !important; font-size: 30px !important;"></ion-icon>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent"> {% endcomment %}
-        
+<header class="w-100">
+   <div class="d-flex justify-content-center align-items-center py-3">
+      <img class="me-2" height="75" src="{% static 'images/icons/logo.png' %}" alt="Hemophilia Society Lucknow">
+      <a class="text-decoration-none text-dark" href="/"><h2>{{site_name}}</h2></a> 
+   </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top gradient-bgcolor">
+    <div class="container">   
+      <a class="text-decoration-none me-3 text-white home_navbar" aria-current="page" href="/">Home</a>   
         <button class="navbar_toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <ion-icon name="menu-outline" style="color:#ddd !important; font-size: 40px !important;"></ion-icon>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-          <li class="nav-item me-2">
-            <a class="nav-link nav_btn active" aria-current="page" href="/">Home</a>
-          </li>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item me-2">
             <a class="nav-link nav_btn " href="/news">News</a>
           </li>
@@ -22,7 +20,7 @@
             <a class="nav-link nav_btn " href="/precaution">Precaution</a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/meet-our-team">Member</a>
+            <a class="nav-link nav_btn " href="/team-member">Member</a>
           </li>
           <li class="nav-item me-2">
             <a class="nav-link nav_btn " href="/doctors">Doctor</a>
@@ -31,7 +29,7 @@
             <a class="nav-link nav_btn " href="/youtube-channel">Youtube Video</a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/about-hemophilia-society">About Hemophilia</a>
+            <a class="nav-link nav_btn " href="/about-hemophilia-society">Hemophilia Society Lucknow</a>
           </li>
           {% comment %} <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,5 +46,5 @@
         </form> {% endcomment %}
       </div>
     </div>
-  </nav>
+</nav>
 

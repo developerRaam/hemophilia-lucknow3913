@@ -19,7 +19,7 @@ def Home(request):
         'presosan':res5,
         'about':about
     }
-    return render(request, 'home.html',context)
+    return render(request, 'app/home.html',context)
 
 #======================= About ===================
 def About(request):
@@ -40,11 +40,15 @@ def HemophiliaAbout(request):
 def ContactUS(request):
     if request.method == 'POST':
         name = request.POST['name']
-        email = request.POST['email']
+        father_name = request.POST['father_name']
+        address = request.POST['address']
+        adhar_number = request.POST['adhar_number']
         mobile = request.POST['mobile']
+        whatsapp_number = request.POST['whatsapp_number']
+        email = request.POST['email']
         comment = request.POST['comment']
 
-        contact = Contactus.objects.create(name=name,email=email,mobile=mobile,comment=comment)
+        contact = Contactus.objects.create(name=name,father_name=father_name,address=address,aadhar_no=adhar_number,mobile=mobile,whatsapp_no=whatsapp_number,email=email,comment=comment)
         contact.save()
         messages.success(request,"Message send successful")
         return redirect('contact-us')
@@ -62,7 +66,7 @@ def Youtube(request):
     context={
         "objects":objects
     }
-    return render(request, 'youtube.html',context)
+    return render(request, 'app/youtube.html',context)
 
 #======================= Youtube Details ===================
 def YoutubeVideoDetail(request,youtube_slug):
@@ -72,7 +76,7 @@ def YoutubeVideoDetail(request,youtube_slug):
         'Youtube_detail':res1,
         'recent_Youtube':res2,
     }
-    return render(request,'youtube_details.html',context)   
+    return render(request,'app/youtube_details.html',context)   
 
 
 #======================= Team Member ===================
@@ -81,7 +85,14 @@ def TeamMember(request):
     context={
         'team_member':res
     }
-    return render(request, 'team-member.html',context)
+    return render(request, 'app/team-member.html',context)
+
+def TeamMemberDetail(request,slug):
+    team_detail = SocietyCoMember.objects.get(slug=slug)
+    context={
+        'team_detail':team_detail   
+    }
+    return render(request, 'app/team-member-detail.html',context)
 
 #======================= Our Doctors ===================
 def Doctors(request):
@@ -89,5 +100,12 @@ def Doctors(request):
     context={
         'hemo_doctor':res
     }
-    return render(request, 'doctors.html',context)
+    return render(request, 'app/doctors.html',context)
+
+def DoctorDetail(request, slug):
+    dr_detail = Doctor.objects.get(slug=slug)
+    context={
+        'dr_detail':dr_detail
+    }
+    return render(request, 'app/doctor-detail.html',context)
 
