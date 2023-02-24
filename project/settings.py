@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'posts',
     'registration',
     'caption',
+    'gallery',
     'tinymce',
     'embed_video',
 ]

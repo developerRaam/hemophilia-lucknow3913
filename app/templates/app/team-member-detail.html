@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Doctors | {{site_name}}{% endblock %}
+{% block title %}Team Member | {{site_name}}{% endblock %}
 {% block content %}
 
 <section>
@@ -15,8 +15,8 @@
             <div class="col-md-8">
                 <div>
                     <p><strong>Name:</strong> <span>{{team_detail.name}}</span></p>
-                    <p>Position: {{team_detail.position}}</p>
-                    <p>{{team_detail.description}}</p>
+                    <p><strong>Position:</strong> {{team_detail.position}}</p>
+                    <p>{{team_detail.description|safe}}</p>
                 </div>
             </div>
         </div>

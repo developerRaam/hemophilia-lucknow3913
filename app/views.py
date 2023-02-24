@@ -81,14 +81,14 @@ def YoutubeVideoDetail(request,youtube_slug):
 
 #======================= Team Member ===================
 def TeamMember(request):
-    res = SocietyCoMember.objects.all().order_by('-created_date')
+    res = SocietyMember.objects.all().order_by('-created_date')
     context={
         'team_member':res
     }
     return render(request, 'app/team-member.html',context)
 
 def TeamMemberDetail(request,slug):
-    team_detail = SocietyCoMember.objects.get(slug=slug)
+    team_detail = SocietyMember.objects.get(slug=slug)
     context={
         'team_detail':team_detail   
     }

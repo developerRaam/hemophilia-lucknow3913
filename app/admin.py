@@ -11,11 +11,11 @@ admin.site.register(doctorCategory,doctorCategoryAdmin)
 
 
 #society member
-class SocietyCoMemberAdmin(admin.ModelAdmin):
+class SocietyMemberAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
         return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
     list_display=("name","image_tag","position","status","created_date")
-admin.site.register(SocietyCoMember,SocietyCoMemberAdmin)
+admin.site.register(SocietyMember,SocietyMemberAdmin)
 
 # Youtube link
 class YoutubeVideoAdmin(admin.ModelAdmin):

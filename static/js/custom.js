@@ -58,11 +58,18 @@ $(document).ready(function(){
 
 
 // Detail page translator
-document.getElementById('btn_english').onclick = function(){
+let btn_english = document.getElementById('btn_english')
+if(btn_english != null){
+  btn_english.onclick = function(){
     english();
+  }
 }
-document.getElementById('btn_hindi').onclick = function(){
+
+let btn_hindi = document.getElementById('btn_hindi')
+if(btn_hindi != null){
+  btn_hindi.onclick = function(){
     hindi();
+}
 }
 
 function english(){

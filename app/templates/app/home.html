@@ -43,8 +43,8 @@
 <section class="mt-5">
     <div class="container-fluid">
         <div style="margin-top:60px">
-            <span class="bg-dark text-white px-3" style="padding:.20rem">Hemophilia Gallery</span>
-            <p class="w-100" style="border-bottom:2px solid #000"></p>
+            <span class="gradient-bgcolor text-white px-3 p-1" >Hemophilia Gallery</span>
+            <p class="w-100 border_bottom"></p>
         </div>
         <div class="row py-3 gy-2">
             <div class="col-md-6 overflow-hidden">
@@ -84,8 +84,8 @@
     <div class="container-fluid">
         {% if hemos_news %}
         <div style="margin-top:60px">
-            <span class="bg-dark text-white px-3"style="padding:.20rem">News</span>
-            <p class="w-100" style="border-bottom:2px solid #000"></p>
+            <span class="gradient-bgcolor text-white px-3 p-1">News</span>
+            <p class="w-100 border_bottom"></p>
         </div>
         <div class="row">
             {% for data in hemos_news %}
@@ -110,8 +110,8 @@
     <div class="container-fluid">
         {% if presosan %}
         <div style="margin-top:60px">
-            <span class="bg-dark text-white px-3"style="padding:.20rem">Precaution</span>
-            <p class="w-100" style="border-bottom:2px solid #000"></p>
+            <span class="gradient-bgcolor text-white px-3 p-1">Precaution</span>
+            <p class="w-100 border_bottom"></p>
         </div>
         <div class="row">
             {% for data in presosan %}
@@ -134,7 +134,7 @@
 <!--Contact-us-->
 <section>
     <div class="container py-5">
-        <h2 class="text-center text-uppercase" style="font-family: fantasy;">get in touch</h2>
+        <h2 class="text-center text-uppercase">get in touch</h2>
         {% for message in messages %}
         <div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show text-center" role="alert">
             {{message}}
