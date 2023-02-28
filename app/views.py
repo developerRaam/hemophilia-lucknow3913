@@ -3,6 +3,7 @@ from .models import *
 from posts.models import NewsCategory,News,Precosan,precosanCategory
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.conf import settings
 
 # Create your views here.
 #======================= Home ===================
@@ -34,26 +35,6 @@ def History(request):
 def HemophiliaAbout(request):
     about = AboutHemophilia.objects.get()
     return render(request, 'about-hemophilia.html',{'about':about})
-
-
-#======================= Contact ===================
-def ContactUS(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        father_name = request.POST['father_name']
-        address = request.POST['address']
-        adhar_number = request.POST['adhar_number']
-        mobile = request.POST['mobile']
-        whatsapp_number = request.POST['whatsapp_number']
-        email = request.POST['email']
-        comment = request.POST['comment']
-
-        contact = Contactus.objects.create(name=name,father_name=father_name,address=address,aadhar_no=adhar_number,mobile=mobile,whatsapp_no=whatsapp_number,email=email,comment=comment)
-        contact.save()
-        messages.success(request,"Message send successful")
-        return redirect('contact-us')
-    else:
-        return render(request,'contact.html')
 
 #======================= Youtube ===================
 def Youtube(request):
@@ -108,4 +89,3 @@ def DoctorDetail(request, slug):
         'dr_detail':dr_detail
     }
     return render(request, 'app/doctor-detail.html',context)
-

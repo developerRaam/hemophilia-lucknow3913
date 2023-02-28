@@ -38,8 +38,9 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path("",include('app.urls')),
+    path('admin/', admin.site.urls),
+    path("contact-us/",include('contact.urls')),
     re_path(r'^images/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]

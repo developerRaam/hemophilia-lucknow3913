@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'registration',
     'caption',
     'gallery',
+    'contact',
     'tinymce',
     'embed_video',
 ]
@@ -160,3 +161,11 @@ TINYMCE_DEFAULT_CONFIG = {
     "a11ycheck ltr rtl | showcomments addcomment code",
     "custom_undo_redo_levels": 10,
 }
+
+# local Mail setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.hemophilialucknow.org'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'contact@hemophilialucknow.org' 
+EMAIL_HOST_PASSWORD = 'OyX7LA5sEP=Z'
