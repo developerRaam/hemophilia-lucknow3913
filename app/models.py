@@ -16,6 +16,10 @@ class doctorCategory(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "doctor Category"
+        
 
 class SocietyMember(models.Model):
     name = models.CharField(max_length=50)
@@ -25,6 +29,9 @@ class SocietyMember(models.Model):
     description = HTMLField(null=True, blank=True)
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)
     created_date =  models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name_plural = "Society Member"
 
 class YoutubeVideo(models.Model):
     youtube_title = models.CharField(max_length=255)
@@ -62,6 +69,9 @@ class Contactus(models.Model):
     comment = models.TextField(null=True)
     created_date =  models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        verbose_name_plural = "Contact us"
+    
 class AboutHemophilia(models.Model):
     edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
     image = models.ImageField(upload_to="hemophilia/",null=True, blank=True)
@@ -69,9 +79,15 @@ class AboutHemophilia(models.Model):
     hindi = HTMLField(null=True, blank=True)
     created_date =  models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        verbose_name_plural = "About Hemophilia"
+    
 class HistoryHemophilia(models.Model):
     edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
     image = models.ImageField(upload_to="hemophilia/",null=True, blank=True)
     english = HTMLField(null=True, blank=True,)
     hindi = HTMLField(null=True, blank=True)
     created_date =  models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name_plural = "History Hemophilia"

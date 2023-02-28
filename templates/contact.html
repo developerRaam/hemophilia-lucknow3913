@@ -3,56 +3,6 @@
 {% block title %}Contact us | {{site_name}}{% endblock %}
 {% block content %}
 
-<section>
-    <div class="container py-5">
-        <h2 class="text-center text-uppercase">get in touch</h2>
-        {% for message in messages %}
-        <div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show text-center" role="alert">
-            {{message}}
-        </div>
-        {% endfor %}
-            <form action="{% url 'contact-us' %}" method="post">
-                {% csrf_token %}
-                <div class="row py-4">
-                    <div class="col-md-6 mb-3">
-                        <label for="Enter your name">Enter your name <span class="text-danger">*</span></label>
-                        <input class="form-control py-2" type="text" name="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="Father's name">Father's name <span class="text-danger">*</span></label>
-                        <input class="form-control py-2" type="text" name="father_name" placeholder="Father's name" required>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="Complete Postal Address">Complete Postal Address <span class="text-danger">*</span></label>
-                        <input class="form-control py-2" type="text" name="address" placeholder="Complete Postal Address" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="Aadhar Card No.">Aadhar Card No.</label>
-                        <input class="form-control py-2" type="number" name="adhar_number" placeholder="Aadhar Card No.">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="Mobile No.">Mobile No. <span class="text-danger">*</span></label>
-                        <input class="form-control py-2" type="number" name="mobile" placeholder="Mobile no." required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="Mobile No with WhatsApp">Mobile No with WhatsApp <span class="text-danger">*</span></label>
-                        <input class="form-control py-2" type="number" name="whatsapp_number" placeholder="Mobile No with WhatsApp" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="Enter email">Enter email</label>
-                        <input class="form-control py-2" type="email" name="email" placeholder="Enter email" >
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="Enter your query">Enter your query</label>
-                        <textarea class="form-control" rows="4"  name="comment" placeholder="Enter your query" style="border:1px solid #ddd"></textarea>
-                    </div>
-                    <div class="w-100 text-center">
-                        <input type="submit" class="btn gradient-bgcolor text-white text-uppercase " name="submit" value="SEND QUERY">
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+{% include 'contact-input-field.html' %}
 
 {% endblock content %}

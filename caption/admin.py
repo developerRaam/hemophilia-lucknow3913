@@ -20,7 +20,7 @@ admin.site.register(Social,SocialAdmin)
 
 class ContactUsAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        return True
+        return False
     def has_delete_permission(self, request, obj=None):
         return False
     list_display = ("edit","address","contact1","contact2","email1","email2")

@@ -11,6 +11,9 @@ class SiteName(models.Model):
     def __str__(self):
         return self.site_heading
     
+    class Meta:
+        verbose_name_plural = "Website Name"
+    
     
 class Social(models.Model):
     edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
@@ -21,6 +24,9 @@ class Social(models.Model):
     twitter = models.CharField(max_length=250,blank=True,null=True)
     on_date = models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        verbose_name_plural = "Social Media Links"
+    
 class ContactUs(models.Model):
     edit = models.CharField(max_length=50, default="Edit",null=True, blank=True,editable=False)
     address = models.CharField(max_length=300,blank=True,null=True)
@@ -29,4 +35,7 @@ class ContactUs(models.Model):
     email1 = models.CharField(verbose_name="Email", max_length=40,blank=True,null=True)
     email2 = models.CharField(verbose_name="Alternate Email", max_length=40,blank=True,null=True)
     on_date = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name_plural = "Footer Contact-us"
     
