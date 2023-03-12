@@ -1,7 +1,6 @@
 from django.urls import path
 from django.contrib import admin
 from .import views
-from posts import views as post
 from registration import views as reg
 
 admin.site.site_header = "Hemophilia Lucknow Admin"
@@ -22,12 +21,6 @@ urlpatterns = [
     
     path("doctors/",views.Doctors, name="doctors"),
     path("doctor/<slug>",views.DoctorDetail, name="doctor-detail"),
-    
-    #Posts
-    path("news/",post.Hemo_News, name="news"),
-    path("news/<title>/",post.NewsDetail, name="news-detail"),
-    path("precaution/",post.Precosans, name="precosans"),
-    path("precaution/<title>",post.PrecosanDetail, name="precosans-detail"),
     
     #Login
     path("login/",reg.Login),

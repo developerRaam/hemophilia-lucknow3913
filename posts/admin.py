@@ -3,26 +3,21 @@ from django.utils.html import format_html
 from posts.models import *
 
 # Register your models here.
-# New category 
-class NewsCategoryAdmin(admin.ModelAdmin):
-    list_display = ("category_name","created_date")
-admin.site.register(NewsCategory,NewsCategoryAdmin)
+#category
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ("name","slug","created_date")
+# admin.site.register(Category,CategoryAdmin)
 
-# Post news
-class NewsAdmin(admin.ModelAdmin):
+#post
+class PostsAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.news_image.url))
-    list_display=("news_title","image_tag","news_category","views","post_by","created_date")
-admin.site.register(News,NewsAdmin)
+        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
+    list_display=("title","category","views","post_by","created_date")
+admin.site.register(Posts,PostsAdmin)
 
-# precosan category
-class precosanCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name","created_date")
-admin.site.register(precosanCategory,precosanCategoryAdmin)
-
-#precosan 
-class PrecosanAdmin(admin.ModelAdmin):
+#ActivityPost
+class ActivityPostAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.pr_image.url))
-    list_display=("title","image_tag","category","views","post_by","created_date")
-admin.site.register(Precosan,PrecosanAdmin)
+        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
+    list_display=("title","image_tag","created_date")
+admin.site.register(ActivityPost,ActivityPostAdmin)

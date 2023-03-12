@@ -6,7 +6,7 @@
             {{message}}
         </div>
         {% endfor %}
-            <form action="{% url 'contact-us' %}" method="post">
+            <form action="{% url 'contact-us' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row py-4">
                     <div class="col-md-6 mb-3">
@@ -26,6 +26,13 @@
                         <input class="form-control hemo_input_box py-2" type="number" name="adhar_number" placeholder="Aadhar Card No.">
                     </div>
                     <div class="col-md-6 mb-3">
+                        <label for="Enter email">Upload Aadhar Image</label>
+                        <input class="form-control hemo_input_box py-2" type="file" name="aadhar_image" />
+                        {% if error %}
+                        <label class="text-danger" style="font-size:14px"><strong>{{error}}</strong></label>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label for="Mobile No.">Mobile No. <span class="text-danger">*</span></label>
                         <input class="form-control hemo_input_box py-2" type="number" name="mobile" placeholder="Mobile no." required>
                     </div>
@@ -33,7 +40,7 @@
                         <label for="Mobile No with WhatsApp">Mobile No with WhatsApp <span class="text-danger">*</span></label>
                         <input class="form-control hemo_input_box py-2" type="number" name="whatsapp_number" placeholder="Mobile No with WhatsApp" required>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <label for="Enter email">Enter email</label>
                         <input class="form-control hemo_input_box py-2" type="email" name="email" placeholder="Enter email" >
                     </div>

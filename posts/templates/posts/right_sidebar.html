@@ -1,35 +1,17 @@
 
-{% if popular_news %}
+{% if popular_post %}
   <div class="mt-4">
     <div>
-      <span class="gradient-bgcolor text-white p-1">Recent News</span>
+      <span class="gradient-bgcolor text-white p-1">Recent Posts</span>
       <p class="w-100 border_bottom"></p>
     </div>
-    {% for data in popular_news %}
+    {% for data in popular_post %}
     <div>
       <div class="d-flex rtw-border-bottom py-2">
         <i class="fa-sharp fa-solid fa-angle-right me-2 mt-1" style="font-size:12px"></i>
-        <a class="text-decoration-none text-dark" style="font-size:14px" href="{% url 'news-detail' title=data.slug %}">{{data.news_title}}</a>
+        <a class="text-decoration-none text-dark" style="font-size:14px" href="{% url 'post-detail' title=data.slug %}">{{data.title}}</a>
     </div>
   </div>
-    {% endfor %}
-  </div>
-{% endif %}
-
-
-{% if popular_precosan %}
-  <div class="mt-4">
-    <div>
-      <span class="gradient-bgcolor text-white p-1">Recent precosan</span>
-      <p class="w-100 border_bottom"></p>
-    </div>
-    {% for data in popular_precosan %}
-    <div>
-        <div class="d-flex rtw-border-bottom py-2">
-          <i class="fa-sharp fa-solid fa-angle-right me-2 mt-1" style="font-size:12px"></i>
-          <a class="text-decoration-none text-dark" style="font-size:14px" href="{% url 'precosans-detail' title=data.slug %}">{{data.title}}</a>
-      </div>
-    </div>
     {% endfor %}
   </div>
 {% endif %}

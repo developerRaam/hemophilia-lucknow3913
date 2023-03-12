@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'gallery',
     'contact',
     'tinymce',
+    'treatment_center',
     'embed_video',
 ]
 
@@ -150,8 +151,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TINYMCE_DEFAULT_CONFIG = {
     "height": "320px",
     "width": "960px",
-    #"menubar": "file edit view insert format tools table help",
-    "menubar":'',
+    "menubar": "file edit view insert format tools table help",
+    # "menubar":'',
     "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
     "fullscreen insertdatetime media table paste code help wordcount spellchecker",
     "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "

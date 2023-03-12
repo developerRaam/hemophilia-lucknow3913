@@ -1,6 +1,6 @@
 {% load static %}
 <!--clock-->
-<div class="d-flex justify-content-end">
+{% comment %} <div class="d-flex justify-content-end">
   <p class="mb-0 me-3" id="clock"></p>
   <script>
     function currentTime() {
@@ -27,42 +27,57 @@
     }
     currentTime();
   </script>
-</div>
+</div> {% endcomment %}
 
 <!--Logo-->
-<header class="w-100">
-   <div class="d-flex justify-content-center align-items-center pb-3">
-      <img class="me-2" height="75" src="{% static 'images/icons/logo.png' %}" alt="Hemophilia Society Lucknow">
-      <a class="text-decoration-none text-dark" href="/"><h2>{{site_name}}</h2></a> 
-   </div>
+<header class="w-100 bg-dark">
+   <div class="d-flex justify-content-center align-items-center pb-3 pt-3">
+      <img class="me-4" height="170" src="{% static 'images/icons/logo.png' %}" alt="Hemophilia Society Lucknow">
+      <a class="text-decoration-none text-white" href="/">
+        <h2 class="brand-header">Hemophilia Society Lucknow <br>
+        <span>हीमोफीलिया सोसायटी (लखनऊ)</span> </h2>
+      </a> 
+    </div>
 </header>
 
 <!--navigation-->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top gradient-bgcolor">
-    <div class="container">   
+    <div class="container-fluid">   
       <a class="text-decoration-none me-3 text-white home_navbar" aria-current="page" href="/">Home</a>   
         <button class="navbar_toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <ion-icon name="menu-outline" style="color:#ddd !important; font-size: 40px !important;"></ion-icon>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav mb-2 mb-lg-0">
+          {% for cat in post_cat %}
+            {% if cat.name == 'News' %}
+              <li class="nav-item me-2">
+                <a class="nav-link nav_btn " href="{% url 'post' cat_slug='news' %}">News<br><span>न्यूज़</span></a>
+              </li>
+            {% elif cat.name == 'Precaution' %}
+              <li class="nav-item me-2">
+                <a class="nav-link nav_btn " href="{% url 'post' cat_slug='precaution' %}">Precaution<br><span>सावधानिया </span></a>
+              </li>
+            {% elif cat.name == 'Article' %}
+              <li class="nav-item me-2">
+                <a class="nav-link nav_btn " href="{% url 'post' cat_slug='article' %}">Article<br><span>लेख</span></a>
+              </li>
+            {% endif %}
+          {% endfor %}
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/news">News</a>
+            <a class="nav-link nav_btn " href="/team-member">Team Member<br><span>टीम सदश्य</span></a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/precaution">Precaution</a>
+            <a class="nav-link nav_btn " href="/doctors">Doctor<br><span>डॉक्टर</span></a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/team-member">Member</a>
+            <a class="nav-link nav_btn " href="/youtube-channel">Youtube Video<br><span>यूट्यूब वीडियो</span></a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/doctors">Doctor</a>
+            <a class="nav-link nav_btn " href="/hemophilia-treatment-center">Hemophilia Treatment Center<br><span>हीमोफीलिया ट्रीटमेंट सेन्टर </span></a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/youtube-channel">Youtube Video</a>
-          </li>
-          <li class="nav-item me-2">
-            <a class="nav-link nav_btn " href="/about-hemophilia-society">Hemophilia Society Lucknow</a>
+            <a class="nav-link nav_btn " href="/about-hemophilia-society">Hemophilia Society Lucknow<br><span>हीमोफीलिया सोसायटी (लखनऊ)</span></a>
           </li>
           {% comment %} <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

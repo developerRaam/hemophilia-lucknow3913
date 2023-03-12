@@ -1,13 +1,25 @@
-  
-  {% if banner_data %}
+  {% load static %}
+  {% comment %} {% if banner_data %}
 
   <div id="header-carousel" class="owl-carousel owl-theme">
     {% for data in banner_data %}
       {% if data.status == 1 %}
       <div class="item" style="height:100%">
-        <img class="banner_image" src="{{data.banner_img.url}}" class="d-block w-100" alt="..." loading="lazy" /> 
+        <img  src="{{data.banner_img.url}}" class="d-block w-50" alt="..." loading="lazy" /> 
       </div>
       {% endif %}
     {% endfor %}
   </div>
-  {% endif %}
+  {% endif %} {% endcomment %}
+
+<div class="container mt-3">
+  <div class="row">
+    {% for data in banner_data %}
+      {% if data.status == 1 %}
+      <div class="col-md-6 h-100 mb-2">
+        <img src="{% if data.banner_img %}{{data.banner_img.url}}{% endif %}" alt="" class="w-100" loading="lazy">
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

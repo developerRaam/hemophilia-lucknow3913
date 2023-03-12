@@ -24,7 +24,7 @@ class doctorCategory(models.Model):
 class SocietyMember(models.Model):
     name = models.CharField(max_length=50)
     slug = AutoSlugField(populate_from='name', unique=True,null=True, default=None)
-    image = models.ImageField(upload_to="society-member/", null=True, blank=True)
+    image = models.ImageField(upload_to="society-member/", unique=True, null=True, blank=True, )
     position = models.CharField(max_length=50, null=True, blank=True)
     description = HTMLField(null=True, blank=True)
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)

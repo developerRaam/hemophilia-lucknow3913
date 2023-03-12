@@ -8,11 +8,25 @@
 	.home_navbar{
 		display: none;
 	}
+	/*Brand */
+	.brand-header{
+		font-weight:bold;font-size:75px;text-align:center;
+	}
+	.brand-header span{
+		font-size: 49px;
+	}
 }
 
 /* Below 560px  */
 @media (max-width: 560px ) {
 	.home_navbar{
 		display: block;
+	}
+	/*Brand */
+	.brand-header{
+		font-weight:bold;font-size:30px;text-align:center;
+	}
+	.brand-header span{
+		font-size: 20px;
 	}
 }

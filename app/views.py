@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import *
-from posts.models import NewsCategory,News,Precosan,precosanCategory
+from posts.models import Posts,Category,ActivityPost
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.conf import settings
@@ -8,16 +8,27 @@ from django.conf import settings
 # Create your views here.
 #======================= Home ===================
 def Home(request):
-    res = Banner.objects.all().order_by('-created_date')
-    res3 = YoutubeVideo.objects.all().order_by('-created_date')
-    res4 = News.objects.all().order_by('-created_date')[:4]
-    res5 = Precosan.objects.all().order_by('-created_date')[:4]
+    res = Banner.objects.all().order_by('-created_date')[:2]
     about = HistoryHemophilia.objects.get()
+    activity_post = ActivityPost.objects.all().order_by('-created_date')[:4]
+    #Post
+    posts = Posts.objects.all().order_by('-created_date')
+    category = Category.objects.all()
+    data = []
+    count = 0
+    for cat in category:
+        for post in posts:
+            if cat.id == post.category_id:
+                if count < 4:
+                    d = post
+                    data.append(d)
+                count = count + 1
+        count = 0 #reset
     context = {
         'banner_data':res,
-        'youtube':res3,
-        'hemos_news':res4,
-        'presosan':res5,
+        'posts':data,
+        'category':category,
+        'activity_post':activity_post,
         'about':about
     }
     return render(request, 'app/home.html',context)

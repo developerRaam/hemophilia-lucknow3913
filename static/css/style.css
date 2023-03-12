@@ -22,6 +22,7 @@ body{
 .nav_btn{
     padding: 10px;
 	color: #f8f9fa !important;
+	text-align: center;
 }
 .nav_btn:hover{
 	background-color: #000;
