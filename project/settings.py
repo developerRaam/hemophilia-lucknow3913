@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'contact',
     'tinymce',
     'treatment_center',
+    'our_publications',
     'embed_video',
 ]
 
