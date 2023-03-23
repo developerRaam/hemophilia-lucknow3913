@@ -12,7 +12,7 @@
   </div>
   {% endif %} {% endcomment %}
 
-<div class="container mt-3">
+{% comment %} <div class="container mt-3">
   <div class="row">
     {% for data in banner_data %}
       {% if data.status == 1 %}
@@ -22,4 +22,11 @@
       {% endif %}
     {% endfor %}
   </div>
-</div>
+</div> {% endcomment %}
+
+
+<section class="bg-white">
+  <div class="container pt-3">
+    <img src="{% static 'images/hemophilia/hemophilia.jpg' %}" alt="hemophilia society lucknow" class="w-100" loading="lazy">
+  </div>
+</section>

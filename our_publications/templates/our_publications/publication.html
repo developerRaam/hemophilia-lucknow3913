@@ -3,12 +3,38 @@
 {% block title %}Our Publications| {{site_name}}{% endblock %}
 {% block content %}
 
-<section>
-
-    <h1 class="text-center">
-        Our Publications
-    </h1>
-
+<section class="pt-4">
+    <div class="container">
+        <h1 class="py-2 mb-4 text-center"><span style="border-bottom: 3px solid #252f72">Our Publications</span></h1>
+        {% if publication %}
+            {% for data in publication %}
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            {% if data.image %}
+                            <div class="col-md-3">
+                                <img class="w-100" src="{{data.image.url}}" alt="{{data.title}}">
+                            </div>
+                            {% endif %}
+                            <div class="col-md-9 mt-2">
+                                <h2 class="card-title fs-4">{{data.title}}</h2>
+                                <p>{% if data.description %}{{data.description}}{% endif %}</p>
+                            </div>
+                        </div>
+                        <div class="float-end">
+                            {% if data.document and data.document_status == 1 %}
+                                <a class="btn btn-primary rounded-0" href="{{data.document.url}}" target="_blank">Click to open</a>
+                            {% elif data.document_url and data.document_url_status == 1 %}
+                                <a class="btn btn-primary rounded-0" href="{{data.document_url}}" target="_blank">Click to open</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 </section>
 
 {% endblock content %}

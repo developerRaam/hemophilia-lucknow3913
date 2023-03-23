@@ -6,6 +6,18 @@
 <section>
     <div class="container py-4">
         <h2 class="text-center mb-5" style="font-family: initial;">History of Hemophilia</h2>
+
+        <!-- Image -->
+        <div class="d-flex justify-content-center ">
+            <div class="col-md-8">
+                {% if about.image %}
+                <figure>
+                    <img class="w-100" src="{{about.image.url}}" alt="History of hemophilia" loading="lazy" />
+                </figure>
+                {% endif %}
+            </div>
+        </div>
+
         <!--Translator button-->
         {% if about.hindi and about.english %}
         <div class="d-flex justify-content-center mb-4">
