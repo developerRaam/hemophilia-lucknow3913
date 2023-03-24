@@ -1,11 +1,95 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}History of Hemophilia | {{site_name}}{% endblock %}
+{% block title %}Hemophilia Treatment Center | {{site_name}}{% endblock %}
 {% block content %}
 
 <section>
-    <div class="container py-4">
-        <h3 class="text-center">Data Not Found</h3>
+    <div class="container mt-4">
+        <h2 class="text-center mb-5">Hemophilia Treatment Center Uttar Pradesh</h2>
+        <!--Uttar-Pradesh-UP-Hindi-Map-political-district-wise-map.jpg-->
+        <div class="row mb-4">
+           <div class="col-md-7 text-center mb-2">
+                <img class="w-100" src="{% static 'images/hemophilia/Uttar-Pradesh-UP-Hindi-Map-political-district-wise-map.jpg' %}" alt="Hemophilia Treatment Center Uttar Pradesh" loading="lazy">
+           </div>
+           <div class="col-md-3">
+                <div>
+                    <h1 class="fs-6 text-success">Factor is available in city of Uttar Pradesh</h1>
+                    <ul>
+                        {% for c in city %}
+                        <li class="factor">{{c.city_name}}</li>
+                        {% endfor %}
+                    </ul>  
+                </div>
+           </div>
+           <div class="col-md-2">
+            <div>
+                <h1 class="fs-6 text-success">All factors</h1>
+                <ul>
+                    {% for f in all_factor %}
+                    <li class="factor">{{f.factor_name}}</li>
+                    {% endfor %}
+                </ul>  
+            </div>
+       </div>
+        </div><hr>
+        <h2 class="mb-3">Factor availability</h2>
+        {% if treatment_center %}
+        {% for i in treatment_center %}
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="p-1">
+                        <div class="row">
+                            {% if i.image %}
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="{% if i.image %}{{i.image.url}}{% endif %}" alt="{{i.doctor_name}}" loading="lazy">
+                            </div>
+                            <div class="col-md-9">
+                            {% else %}
+                            <div class="col-md-12">
+                            {% endif %}
+                                <table class="table table-bordered mb-0" style="font-size:14px">
+                                    {% if i.doctor_name %}<tr><th>Dr.Name</th><td>{{i.doctor_name}}</td></tr>{% endif %}
+                                    {% if i.room_no %}<tr><th>Room No.</th><td>{{i.room_no}}</td></tr>{% endif %}
+                                    <tr>
+                                        <th>Hospital Name</th>
+                                        <td>{{i.hospital_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City</th>
+                                        <td>{{i.city}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Factor</th>
+                                        <td>
+                                        {% for f in factors %}
+                                            {% if i.id == f.treatment_center_id %}
+                                                <span class="factor-section mx-1">{{f.factor}}, </span>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td>
+                                            {% if i.status == 1 %}
+                                                <span class="text-white bg-success p-1 rounded-1">Available</span>
+                                            {% elif i.status == 0 %}
+                                            <span class="text-white bg-danger p-1 rounded-1">Not Available</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2 class="text-center">Factor not found</h2>
+        {% endif %}
     </div>
 </section>
 

@@ -2,6 +2,6 @@ from django.urls import path
 from .import views
 
 urlpatterns = [
-    path("",views.TreatmentCenter),
+    path("",views.TreatmentCenterView),
 
 ]
