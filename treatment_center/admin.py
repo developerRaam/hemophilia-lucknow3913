@@ -3,7 +3,7 @@ from treatment_center.models import *
 
 # Register your models here.
 class TreatmentCityAdmin(admin.ModelAdmin):
-    list_display = ("city_name","status","created_date")
+    list_display = ("city_name","slug","status","created_date")
 admin.site.register(TreatmentCity,TreatmentCityAdmin)
 
 class FactorAdmin(admin.ModelAdmin):

@@ -1,10 +1,12 @@
 from django.db import models
+from autoslug import AutoSlugField
 
 # Create your models here.
 CM_STATUS = ((1, 'Available'), (0, 'Not Available'))
 
 class TreatmentCity(models.Model):
-    city_name = models.CharField(max_length=50)
+    city_name = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='city_name', unique=True,null=True, default=None)
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)
     created_date =  models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -24,6 +26,7 @@ class TreatmentCenter(models.Model):
     room_no = models.CharField(max_length=50,null=True, blank=True)
     image= models.ImageField(upload_to="treatment_center/", unique=True, null=True, blank=True,)
     hospital_name = models.CharField(max_length=255)
+    url = models.URLField(max_length=255, null=True, blank=True)
     city = models.ForeignKey(TreatmentCity, verbose_name="City", on_delete=models.CASCADE)
     status = models.SmallIntegerField(choices=CM_STATUS, default=1)
     created_date =  models.DateTimeField(auto_now_add=True)
