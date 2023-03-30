@@ -9,7 +9,9 @@
         <div class="row gy-4">
             <div class="col-md-4">
                 <div>
+                    {% if team_detail.image %}
                     <img class="w-100" src="{{team_detail.image.url}}" alt="hemophilia member" loading="lazy" />
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-8">

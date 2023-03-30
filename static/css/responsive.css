@@ -15,6 +15,9 @@
 	.brand-header span{
 		font-size: 49px;
 	}
+	.card_image{
+		height: 260px;
+	}
 }
 
 /* Below 560px  */

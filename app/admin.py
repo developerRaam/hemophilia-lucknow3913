@@ -9,11 +9,19 @@ class doctorCategoryAdmin(admin.ModelAdmin):
     list_display = ("name","created_date")
 admin.site.register(doctorCategory,doctorCategoryAdmin)
 
+# Add doctor list
+class DoctorAdmin(admin.ModelAdmin):
+    def image_tag(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
+    list_display=("name","image_tag","department","mobile","description","created_date")
+admin.site.register(Doctor,DoctorAdmin)
 
 #society member
 class SocietyMemberAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
+        if obj.image:
+            return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
     list_display=("name","image_tag","position","status","created_date")
 admin.site.register(SocietyMember,SocietyMemberAdmin)
 
@@ -29,13 +37,6 @@ class BannerAdmin(admin.ModelAdmin):
 
     list_display=("image_tag","heading","sub_heading","link","link_text","status","created_date")
 admin.site.register(Banner,BannerAdmin)
-
-# Add doctor list
-class DoctorAdmin(admin.ModelAdmin):
-    def image_tag(self, obj):
-        return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
-    list_display=("name","image_tag","department","mobile","description","created_date")
-admin.site.register(Doctor,DoctorAdmin)
 
 class AboutHemophiliaAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):

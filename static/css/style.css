@@ -49,6 +49,7 @@ body{
 .hemo_detail{
 	padding: 10px;
 	line-height: 5px;
+	margin-top: 10px;
 }
 .news_url:hover{
 	color: #784a92 !important;

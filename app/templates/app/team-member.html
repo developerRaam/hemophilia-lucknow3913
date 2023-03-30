@@ -12,10 +12,12 @@
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card shadow-sm h-100 gradient-bgcolor">
                     <div class="text-center">
-                        <img class="w-100" src="{{data.image.url}}" alt="{{data.name}}" loading="lazy" />
+                        {% if data.image %}
+                        <img class="w-100 card_image" src="{{data.image.url}}" alt="{{data.name}}" loading="lazy" />
+                        {% endif %}
                     </div>
                     <div class="hemo_detail">
-                        <p class="text-info"><strong class="text-uppercase">{{data.name}}</strong></p>
+                        <p class="text-light"><span class="text-uppercase">{{data.name}}</span></p>
                         <p class="text-uppercase text-warning">{{data.position}}</p>
                     </div>
                     <div class="text-center mb-3">
