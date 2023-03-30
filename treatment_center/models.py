@@ -24,7 +24,7 @@ class Factor(models.Model):
 class TreatmentCenter(models.Model):
     doctor_name = models.CharField(max_length=50,null=True, blank=True)
     room_no = models.CharField(max_length=50,null=True, blank=True)
-    image= models.ImageField(upload_to="treatment_center/", unique=True, null=True, blank=True,)
+    image = models.ImageField(upload_to="treatment_center/", null=True, blank=True,)
     hospital_name = models.CharField(max_length=255)
     url = models.URLField(max_length=255, null=True, blank=True)
     city = models.ForeignKey(TreatmentCity, verbose_name="City", on_delete=models.CASCADE)

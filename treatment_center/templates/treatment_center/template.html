@@ -9,17 +9,29 @@
            </div>
            <div class="col-md-4">
                 <div>
-                    <h1 class="fs-6 text-success">Factor is available in city of Uttar Pradesh</h1>
+                    <h1 class="fs-6 text-success">Presently factors are available in the follwing cities of Uttar Pradesh <span>वर्तमान में उत्तर प्रदेश के निम्नलिखित शहरों में फैक्टर उपलब्ध हैं</span> </h1>
                     <ul>
                         {% for c in city %}
-                        <li class="factor"><a  class="text-decoration-none" href="{% url 'city' city_slug=c.slug city_id=c.id %}">{{c.city_name}}</a></li>
+                        <li class="factor"><a  class="text-decoration-none" href="{% url 'city' city_slug=c.slug city_id=c.id %}">{{c.city_name}}</a>
+                            <script>
+                                var count = 0;
+                            </script>
+                        {% for t in for_city_counter %}
+                            {% if c.id == t.city_id %}
+                            <script>
+                                count++;
+                            </script>
+                            {% endif %}
+                        {% endfor %}
+                        <script>document.write("("+count+")")</script>
+                        </li>
                         {% endfor %}
                     </ul>  
                 </div>
            </div>
            {% comment %} <div class="col-md-3">
             <div>
-                <h1 class="fs-6 text-success">All factors</h1>
+                <h1 class="fs-6 text-success">Factor availability</h1>
                 <ul>
                     {% for f in all_factor %}
                     <li class="factor">{{f.factor_name}}</li>
@@ -27,9 +39,11 @@
                 </ul>  
             </div> {% endcomment %}
         </div><hr>
+
+
         <h2 class="mb-3">Factor availability</h2>
-        {% if treatment_center %}
-        {% for i in treatment_center %}
+        {% if objects %}
+        {% for i in objects %}
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-12">
                 <div class="card mb-4">
@@ -37,7 +51,7 @@
                         <div class="row">
                             {% if i.image %}
                             <div class="col-md-3">
-                                <img class="img-fluid" src="{% if i.image %}{{i.image.url}}{% endif %}" alt="{{i.doctor_name}}" loading="lazy">
+                                <img class="w-100" src="{% if i.image %}{{i.image.url}}{% endif %}" alt="{{i.doctor_name}}" loading="lazy">
                             </div>
                             <div class="col-md-9">
                             {% else %}
@@ -91,5 +105,7 @@
         {% else %}
         <h2 class="text-center">Not found any treatment center</h2>
         {% endif %}
+        <!--pagination-->
+        {% include 'pagination.html' %}
     </div>
 </section>

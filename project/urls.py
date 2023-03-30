@@ -43,7 +43,7 @@ urlpatterns = [
     path("post/",include('posts.urls')),
     path("contact-us/",include('contact.urls')),
     path("our-publications/",include('our_publications.urls')),
-    path("hemophilia-treatment-center",include('treatment_center.urls')),
+    path("hemophilia-treatment-center/",include('treatment_center.urls')),
     re_path(r'^images/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
