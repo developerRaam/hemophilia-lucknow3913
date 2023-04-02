@@ -8,6 +8,7 @@ def TreatmentCenterView(request):
     for_city_counter = TreatmentCenter.objects.all().order_by('-created_date')
     factor = SelectMutipleFactor.objects.all()
     all_factor = Factor.objects.all()
+    city_map = UploadMap.objects.all()
     city = TreatmentCity.objects.all().order_by('city_name')
     
     # Show 2 objects per page
@@ -20,6 +21,7 @@ def TreatmentCenterView(request):
        'factors':factor,
        'city':city,
        'all_factor':all_factor, 
+       'city_map':city_map,
        'for_city_counter':for_city_counter,
    }
     return render(request, 'treatment_center/treatment-center.html',context)
@@ -29,11 +31,13 @@ def FilterByCity(request, city_slug,city_id):
     for_city_counter = TreatmentCenter.objects.all().order_by('-created_date')
     factor = SelectMutipleFactor.objects.all()
     all_factor = Factor.objects.all()
+    city_map = UploadMap.objects.all()
     city = TreatmentCity.objects.all().order_by('city_name')
     context={
        'objects':treatment_center,
        'factors':factor,
        'city':city,
+       'city_map':city_map,
        'all_factor':all_factor, 
        'for_city_counter':for_city_counter
    }

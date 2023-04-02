@@ -40,3 +40,6 @@ class SelectMutipleFactor(models.Model):
     factor = models.ForeignKey(Factor, verbose_name="Factor", on_delete=models.CASCADE)
     class Meta:
         verbose_name_plural = 'Select Factor'
+        
+class UploadMap(models.Model):
+    image = models.ImageField(upload_to="hemophilia/", null=False, blank=False,)

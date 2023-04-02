@@ -73,7 +73,7 @@ def YoutubeVideoDetail(request,youtube_slug):
 
 #======================= Team Member ===================
 def TeamMember(request):
-    res = SocietyMember.objects.all().order_by('-created_date')
+    res = SocietyMember.objects.all().order_by('-id')
     context={
         'team_member':res
     }

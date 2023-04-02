@@ -5,7 +5,9 @@
         <!--Uttar-Pradesh-UP-Hindi-Map-political-district-wise-map-->
         <div class="row mb-4">
            <div class="col-md-8 text-center mb-2">
-                <img class="w-100" src="{% static 'images/hemophilia/Uttar-Pradesh-UP-Hindi-Map-political-district-wise-map.webp' %}" alt="Hemophilia Treatment Center Uttar Pradesh" loading="lazy">
+                {% for i in city_map %}
+                <img class="w-100" src="{% if i.image %}{{i.image.url}}{% endif %}" alt="Hemophilia Treatment Center Uttar Pradesh" loading="lazy">
+                {% endfor %}
            </div>
            <div class="col-md-4">
                 <div>
