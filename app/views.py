@@ -100,3 +100,10 @@ def DoctorDetail(request, slug):
         'dr_detail':dr_detail
     }
     return render(request, 'app/doctor-detail.html',context)
+
+def HemophiliaGallery(request):
+    activity_post = ActivityPost.objects.all().order_by('-created_date')
+    paginator = Paginator(activity_post, 20)  # Show 2 objects per page
+    page = request.GET.get('page')
+    objects = paginator.get_page(page)
+    return render(request, 'hemophilia-gallery.html',{'objects':objects})

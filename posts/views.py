@@ -34,9 +34,4 @@ def PostDetail(request,title):
         'popular_post':res2
     }
     return render(request,'posts/post_details.html',context)  
-
-
-# def Articles(request):
-#     article_one = Article.objects.get()
-#     article_all = Article.objects.all()
     

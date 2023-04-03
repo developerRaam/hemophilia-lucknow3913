@@ -24,6 +24,9 @@ urlpatterns = [
     
     #Login
     path("login/",reg.Login),
-    path("register/",reg.Register)
+    path("register/",reg.Register),
+    
+    #Activity post
+    path("hemophilia-gallery/",views.HemophiliaGallery),
 
 ]

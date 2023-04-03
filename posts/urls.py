@@ -3,6 +3,5 @@ from .import views
 
 urlpatterns = [
     path("c/<cat_slug>",views.Post, name="post"),
-    path("<title>/",views.PostDetail, name="post-detail")
-
+    path("<title>/",views.PostDetail, name="post-detail"),
 ]
