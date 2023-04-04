@@ -134,3 +134,7 @@ iframe{
     font-weight: 600;
     color: #8d4e4e;
 }
+.activity-gallery{
+	max-height: 400px;
+	width: 100%;
+}

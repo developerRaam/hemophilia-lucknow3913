@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import *
-from posts.models import Posts,Category,ActivityPost
+from posts.models import Posts,Category,ActivityPost,SelectMutipleActivityPost
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.conf import settings
@@ -11,6 +11,7 @@ def Home(request):
     res = Banner.objects.all().order_by('-created_date')[:2]
     about = HistoryHemophilia.objects.get()
     activity_post = ActivityPost.objects.all().order_by('-created_date')[:4]
+    multiple_image = SelectMutipleActivityPost.objects.all().order_by('id')[:4]
     #Post
     posts = Posts.objects.all().order_by('-created_date')
     category = Category.objects.all()
@@ -28,6 +29,7 @@ def Home(request):
         'banner_data':res,
         'posts':data,
         'category':category,
+        'multiple_image':multiple_image,
         'activity_post':activity_post,
         'about':about
     }
@@ -103,7 +105,16 @@ def DoctorDetail(request, slug):
 
 def HemophiliaGallery(request):
     activity_post = ActivityPost.objects.all().order_by('-created_date')
-    paginator = Paginator(activity_post, 20)  # Show 2 objects per page
+    multiple_image = SelectMutipleActivityPost.objects.all()
+    
+    # Show 20 objects per page
+    paginator = Paginator(activity_post, 20) 
     page = request.GET.get('page')
     objects = paginator.get_page(page)
-    return render(request, 'hemophilia-gallery.html',{'objects':objects})
+    
+    context = {
+        'multiple_image':multiple_image,
+        'objects':objects
+    }
+    
+    return render(request, 'hemophilia-gallery.html',context)

@@ -32,11 +32,20 @@ class Posts(models.Model):
         verbose_name_plural='Post'
     
 class ActivityPost(models.Model):
-    title = models.CharField(max_length=250,blank=True, null=True)
+    title = models.CharField(max_length=500,blank=True, null=True)
     image = models.ImageField(upload_to="activity_post/",blank=True, null=True)
     post_by = models.CharField(max_length=50, default="admin", editable=False)
     created_date =  models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
     
     class Meta:
         verbose_name_plural='Activity Post'
+        
+class SelectMutipleActivityPost(models.Model):
+    activity_id = models.ForeignKey(ActivityPost, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="activity_post/",blank=True, null=True)
+    class Meta:
+        verbose_name_plural = 'Select Multiple Image'
+
     

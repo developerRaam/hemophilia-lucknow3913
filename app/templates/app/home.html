@@ -49,20 +49,31 @@
         <div class="row py-3 gy-2">
             {% for data in activity_post %}
             <div class="col-md-6">
-                <div class="overflow-hidden">
-                    <div class="gallery-images">
-                        <figure>
+                <div class="overflow-hidden bg-white shadow-sm p-1">
+                    <h4 style="font-family: auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                    <div class=""><!--gallery-images-->
+                        <figure class="mb-0">
                             <img class="w-100" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
                         </figure>
                     </div>
-                    <h5 style="font-family: auto;">{{data.title}}</h5>
+                    <div class="d-flex flex-wrap gap-3">
+                        {% for m in multiple_image %}
+                        {% if data.id == m.activity_id_id %}
+                        <figure class="mb-0">
+                            <a target="blank" href="{% if m.image %}{{m.image.url}}{% endif %}">
+                                <img height="100" class="activity-gallery" src="{% if m.image %}{{m.image.url}}{% endif %}" alt="" loading="lazy" />
+                            </a>
+                        </figure>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
     <div class="text-center">
-        <a href="/hemophilia-gallery" class="gradient-bgcolor btn text-white">Scroll More</a>
+        <a href="/hemophilia-gallery" class="gradient-bgcolor btn text-white">Load More</a>
     </div>
 </section>
 
