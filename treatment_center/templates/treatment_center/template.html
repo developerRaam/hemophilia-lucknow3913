@@ -11,7 +11,7 @@
            </div>
            <div class="col-md-4">
                 <div>
-                    <h1 class="fs-6 text-success">Presently factors are available in the follwing cities of Uttar Pradesh <span>वर्तमान में उत्तर प्रदेश के निम्नलिखित शहरों में फैक्टर उपलब्ध हैं</span> </h1>
+                    <h1 class="fs-6 text-success">Presently factors are available in the following cities of Uttar Pradesh which are being shown by red colored mark in the given map. <span>वर्तमान में उत्तर प्रदेश के निम्नलिखित शहरों में फैक्टर उपलब्ध हैं जिनको प्रदेश के मानचित्र में लाल रंग की बिंदी से दिखाया गया है</span> </h1>
                     <ul>
                         {% for c in city %}
                         <li class="factor"><a  class="text-decoration-none" href="{% url 'city' city_slug=c.slug city_id=c.id %}">{{c.city_name}}</a>
@@ -52,10 +52,10 @@
                     <div class="p-1">
                         <div class="row">
                             {% if i.image %}
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <img class="w-100" src="{% if i.image %}{{i.image.url}}{% endif %}" alt="{{i.doctor_name}}" loading="lazy">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                             {% else %}
                             <div class="col-md-12">
                             {% endif %}

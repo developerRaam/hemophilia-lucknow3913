@@ -55,6 +55,14 @@ $(document).ready(function(){
 // })
 // })
 
+$('.hemophilia-gallery').owlCarousel({
+    items : 1,
+    loop : true,
+    autoplay:true,
+    dots:true,
+    nav:true,
+    autoplayTimeout:4000,
+})
 
 
 // Detail page translator
