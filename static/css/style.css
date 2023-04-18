@@ -137,4 +137,9 @@ iframe{
 .activity-gallery{
 	max-height: 400px;
 	width: 100%;
+	border: 1px solid #ddd;
 }
+
+/* .activity_gallery_slide{
+	max-width: 992px;
+} */

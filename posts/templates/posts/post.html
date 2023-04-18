@@ -12,10 +12,14 @@
                 <div class="mt-4">
                     <a class="text-decoration-none" href="{% url 'post-detail' title=data.slug %}">
                       <div class="row">
+                        {% if data.image %}
                         <div class="col-md-3">
-                          <img class="w-100" src="{% if data.image %}{{data.image.url}}{% else %}{% static 'images/hemophilia/image-not-available.png' %}{% endif %}" alt="{{data.title}}">
+                          <img class="w-100" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="{{data.title}}">
                         </div>
                         <div class="col-md-9">
+                        {% else %}
+                          <div class="col-md-12">
+                        {% endif %}
                           {{data.title}}
                           <div class="text-dark" style="font-size:14px">{{data.sub_title | safe}}</div>
                         </div>

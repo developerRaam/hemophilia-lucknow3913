@@ -33,10 +33,14 @@ class Posts(models.Model):
     
 class ActivityPost(models.Model):
     title = models.CharField(max_length=500,blank=True, null=True)
+    hindi_title = models.CharField(max_length=500, verbose_name="Hindi Title" , blank=True, null=True )
     image = models.ImageField(upload_to="activity_post/",blank=True, null=True)
     post_by = models.CharField(max_length=50, default="admin", editable=False)
     created_date =  models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
+        if self.title==None:
+            return "ERROR-CUSTOMER NAME IS NULL"
         return self.title
     
     class Meta:

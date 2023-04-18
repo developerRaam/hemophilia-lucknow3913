@@ -4,7 +4,7 @@
 {% block content %}
 
 <!--Section 2 hemophilia galary-->
-<section class="mt-5">
+<section class="pt-5 bg-white">
     <div class="container">
         <div style="margin-top:60px">
             <span class="gradient-bgcolor text-white px-3 p-1">Hemophilia Gallery</span>
@@ -13,12 +13,12 @@
         <div class="py-3 gy-2">
             {% for data in objects %}
             <div class="col-md-12">
-                <h4 class="bg-warning p-1" style="font-family:auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                <h4 class="bg-warning p-1 fs-6"  style="font-family:auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
                 <div class="overflow-hidden bg-white shadow-sm p-1">
                     <div class="d-flex flex-wrap" style="grid-gap:10px"><!--gallery-images-->
                         <figure class="mb-0">
                             <a target="blank" href="{% if data.image %}{{data.image.url}}{% endif %}">
-                                <img class="activity-gallery" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
+                                <img  class="activity-gallery" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
                             </a>
                         </figure>
                         {% for m in multiple_image %}
@@ -30,8 +30,21 @@
                         {% endfor %}
                     </div>
                 </div>
+
+                {% comment %} <div class="d-flex justify-content-center">
+                    <div class="col-md-8">
+                        <div class=" m-auto" style="max-height:400px">
+                            <img class="activity_gallery_slide" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
+                                {% for m in multiple_image %}
+                                {% if data.id == m.activity_id_id %}
+                                    <img class="activity_gallery_slide" src="{% if m.image %}{{m.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
+                                {% endif %}
+                            {% endfor %} 
+                        </div>
+                    </div>
+                </div> {% endcomment %}
             </div><br>
-            {% endfor %}
+                {% endfor %}
         </div>
         <!--Pagination-->
         {% include 'pagination.html' %}

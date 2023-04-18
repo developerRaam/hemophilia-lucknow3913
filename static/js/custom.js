@@ -10,61 +10,6 @@ $(document).ready(function(){
   });
 })
 
-
-// $(document).ready(function(){
-//   $('#hemo-news').owlCarousel({
-//     rtl:false,
-//     loop:true,
-//     margin:10,
-//     nav:true,
-//     autoplay:true,
-//     autoplayTimeout:5000,
-//     responsive:{
-//         0:{
-//             items:2
-//         },
-//         600:{
-//             items:2
-//         },
-//         1000:{
-//             items:4
-//         }
-//     }
-// })
-// })
-
-// $(document).ready(function(){
-//   $('#presosan').owlCarousel({
-//     rtl:false,
-//     loop:true,
-//     margin:10,
-//     nav:true,
-//     autoplay:true,
-//     autoplayTimeout:5000,
-//     responsive:{
-//         0:{
-//             items:2
-//         },
-//         600:{
-//             items:2
-//         },
-//         1000:{
-//             items:4
-//         }
-//     }
-// })
-// })
-
-$('.hemophilia-gallery').owlCarousel({
-    items : 1,
-    loop : true,
-    autoplay:true,
-    dots:true,
-    nav:true,
-    autoplayTimeout:4000,
-})
-
-
 // Detail page translator
 let btn_english = document.getElementById('btn_english')
 if(btn_english != null){
@@ -90,3 +35,12 @@ function hindi(){
     document.getElementById('english').style.display = 'none';
     document.getElementById('default_content').innerHTML = '';
 }
+
+// // Hemophilia gallery
+// const activity_image = document.querySelectorAll(".activity_gallery_slide");
+// var counter = 0;
+// activity_image.forEach(
+//   (slide, index) => {
+//     slide.style.left = `${index * 100}%`
+//   }
+// )

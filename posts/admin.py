@@ -25,5 +25,5 @@ class ActivityPostAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
         if obj.image:
             return format_html('<img src="{}" style="max-width:70px; max-height:70px"/>'.format(obj.image.url))
-    list_display=("title","image_tag","created_date")
+    list_display=("title","hindi_title","image_tag","created_date")
 admin.site.register(ActivityPost,ActivityPostAdmin)

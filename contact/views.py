@@ -58,7 +58,7 @@ def send_mail_after_submit(name,father_name,aadhar_number,mobile,whatsapp_number
         'New patient message!',
         text_content,
         settings.EMAIL_HOST_USER,
-        ['rnm312000@gmail.com']   
+        ['hemophilialucknow2020@gmail.com']   
     )
     email.attach_alternative(html_content, "text/html")
     email.send()

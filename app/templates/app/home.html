@@ -49,24 +49,29 @@
         <div class="row py-3 gy-2">
             {% for data in activity_post %}
             <div class="col-md-6">
-                <div class="overflow-hidden bg-white shadow-sm p-1">
-                    <h4 style="font-family: auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
-                    <div class=""><!--gallery-images-->
-                        <figure class="mb-0">
-                            <img class="w-100" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
-                        </figure>
+                <div class="overflow-hidden bg-white shadow-sm p-2 h-100">
+                    {% if data.title %}
+                    <h4 class="fs-6" style="font-family: auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                    {% endif %}
+                    {% if data.hindi_title %}
+                    <h4 class="fs-6" style="font-family: auto;">{{data.hindi_title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                    {% endif %}
+                    <div><!--gallery-images-->
+                        <a target="blank" href="{% if data.image %}/hemophilia-gallery{% endif %}">
+                            <img class="gallery-images" style="max-height:350px" class="w-100" src="{% if data.image %}{{data.image.url}}{% endif %}" alt="hemophilia society lucknow" loading="lazy" />
+                        </a>
                     </div>
-                    <div class="d-flex flex-wrap gap-3">
+                    {% comment %} <div class="d-flex flex-wrap gap-3">
                         {% for m in multiple_image %}
-                        {% if data.id == m.activity_id_id %}
-                        <figure class="mb-0">
-                            <a target="blank" href="{% if m.image %}{{m.image.url}}{% endif %}">
-                                <img height="100" class="activity-gallery" src="{% if m.image %}{{m.image.url}}{% endif %}" alt="" loading="lazy" />
-                            </a>
-                        </figure>
-                        {% endif %}
+                            {% if data.id == m.activity_id_id %}
+                                <figure class="mb-0">
+                                    <a target="blank" href="{% if m.image %}{{m.image.url}}{% endif %}">
+                                        <img height="100" src="{% if m.image %}{{m.image.url}}{% endif %}" alt="" loading="lazy" />
+                                    </a>
+                                </figure>
+                            {% endif %}
                         {% endfor %}
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
             {% endfor %}
