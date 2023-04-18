@@ -51,10 +51,10 @@
             <div class="col-md-6">
                 <div class="overflow-hidden bg-white shadow-sm p-2 h-100">
                     {% if data.title %}
-                    <h4 class="fs-6" style="font-family: auto;">{{data.title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                    <h4 class="fs-6" style="font-family: auto;">{{data.title}}</h4>
                     {% endif %}
                     {% if data.hindi_title %}
-                    <h4 class="fs-6" style="font-family: auto;">{{data.hindi_title}} <span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span></h4>
+                    <h4 class="fs-6" style="font-family: auto;">{{data.hindi_title}} <!--<span style="font-size:14px">{{data.created_date|date:"d M Y"}}</span> --></h4>
                     {% endif %}
                     <div><!--gallery-images-->
                         <a target="blank" href="{% if data.image %}/hemophilia-gallery{% endif %}">

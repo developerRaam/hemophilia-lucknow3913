@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-between">
                         <p class="mt-2">
                             <span class="text-secondary">{{post_detail.category}}</span> |
-                            <span class="text-secondary">{{post_detail.created_date | date}}</span> |
+                            {% comment %} <span class="text-secondary">{{post_detail.created_date | date}}</span> | {% endcomment %}
                             <span class="text-secondary">Post by: {{post_detail.post_by}}</span>
                         </p>
                         {% if post_detail.english_description and post_detail.hindi_description %}
