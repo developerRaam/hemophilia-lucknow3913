@@ -9,7 +9,8 @@
             <div class="col-md-9">
                 {% if post_detail %}
                 <div class="mt-4">
-                    <h2 class="mb-4"><strong>{{post_detail.title}}</strong> <img height="50" src="{% static 'images/hemophilia/CHILD-HEMO.jpg' %}" alt=""></h2>
+                    <h2 class="fs-4 mb-0">{{post_detail.title}}<img class="ms-2" height="50" src="{% static 'images/hemophilia/CHILD-HEMO.jpg' %}" alt=""></h2>
+                    {% if post_detail.hindi_title %}<h2 class="mb-4 fs-4">{{post_detail.hindi_title}}</h2>{% endif %}
                     {% comment %} <p class="text-dark">{{post_detail.sub_title | safe }}</p> {% endcomment %}
                     <div class="d-flex justify-content-between">
                     </div>

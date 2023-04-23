@@ -20,7 +20,7 @@
                         {% else %}
                           <div class="col-md-12">
                         {% endif %}
-                          {{data.title}}
+                          <h2 class="fs-6">{{data.title}} {% if data.hindi_title %} {{data.hindi_title}}{% endif %}</h2>
                           <div class="text-dark" style="font-size:14px">{{data.sub_title | safe}}</div>
                         </div>
                       </div>

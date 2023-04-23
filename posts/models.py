@@ -15,7 +15,8 @@ class Category(models.Model):
         verbose_name_plural='Category'
     
 class Posts(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(verbose_name="English Title", max_length=255)
+    hindi_title = models.CharField(max_length=400, verbose_name="Hindi Title", blank=True, null=True)
     sub_title = models.CharField(max_length=400,blank=True, null=True)
     category = models.ForeignKey(Category,null=True, blank=True, on_delete=models.CASCADE, default=1)
     image = models.ImageField(upload_to="post_image/", blank=True, null=True)
