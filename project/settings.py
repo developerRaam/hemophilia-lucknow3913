@@ -166,8 +166,8 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # local Mail setup
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.hemophilialucknow.org'
+EMAIL_HOST = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'contact@hemophilialucknow.org' 
-EMAIL_HOST_PASSWORD = 'OyX7LA5sEP=Z'
+EMAIL_HOST_USER = '' 
+EMAIL_HOST_PASSWORD = ''
